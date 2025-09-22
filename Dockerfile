@@ -12,4 +12,4 @@ ENV DB_PORT=5432
 ENV PORT=8080
 ENV JWT_SECRET=secret_key
 EXPOSE $PORT
-CMD ["node", "index.js"]
+CMD ["node", "index.ts"]
