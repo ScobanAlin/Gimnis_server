@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: gimnis-server
+    env: node
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Example: add your database connection string
+      # - key: DATABASE_URL
+      #   sync: false   # set this in Render dashboard, not committed
