@@ -8,6 +8,7 @@ import scoreRoutes from "./routes/scoreRoutes";
 import voteRoutes from "./routes/voteRoutes";
 import rankingRoutes from "./routes/rankingRoutes";
 import showRoutes from "./routes/showRoutes";
+import logRoutes from "./routes/logRoutes";
 import { createTables } from "./db"; // ✅ import table creator
 
 const app = express();
@@ -29,6 +30,7 @@ app.use("/api", scoreRoutes);
 app.use("/api", voteRoutes);
 app.use("/", rankingRoutes);
 app.use("/api", showRoutes);
+app.use("/api/logs", logRoutes);
 
 // ✅ Ensure tables exist before starting the server
 createTables()
