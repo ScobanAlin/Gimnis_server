@@ -2,19 +2,21 @@
 import "dotenv/config";
 import { Pool } from "pg";
 
-const ssl =
-  process.env.PGSSLMODE === "require"
-    ? { rejectUnauthorized: false }
-    : undefined;
+// ✅ Support both DATABASE_URL (Render) and manual config
+const connectionString = process.env.DATABASE_URL;
 
-const pool = new Pool({
-  host: process.env.PGHOST,
-  port: Number(process.env.PGPORT),
-  database: process.env.PGDATABASE,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  ssl,
-});
+const pool = connectionString
+  ? new Pool({
+      connectionString,
+      ssl: { rejectUnauthorized: false }, // Render/Postgres requires SSL
+    })
+  : new Pool({
+      host: process.env.PGHOST,
+      port: Number(process.env.PGPORT) || 5432,
+      database: process.env.PGDATABASE,
+      user: process.env.PGUSER,
+      password: process.env.PGPASSWORD,
+    });
 
 export const createTables = async () => {
   const query = `
@@ -85,6 +87,7 @@ export const createTables = async () => {
   `;
 
   await pool.query(query);
+  console.log("✅ Tables created (if not existing).");
 };
 
 export default pool;
