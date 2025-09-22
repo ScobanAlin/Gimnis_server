@@ -120,93 +120,102 @@
     <div id="content"></div>
 
     <script>
+      let lastState = null;
+
       async function loadState() {
-        const content = document.getElementById("content");
-        const res = await fetch("/api/show/state");
-        const state = await res.json();
+        try {
+          const res = await fetch("/api/show/state");
+          const state = await res.json();
 
-        content.innerHTML = "";
-
-        if (state.mode === "banner") {
-          content.innerHTML = `
-            <div class="banner">
-              <img src="/static/banner.jpg" alt="Concurs Banner">
-            </div>
-          `;
-        } else if (state.mode === "competitor") {
-          let ranking = [];
-          let currentCompetitorScores = null;
-          let membersHtml = "";
-
-          try {
-            const rRes = await fetch("/api/rankings");
-            const allRankings = await rRes.json();
-            ranking = allRankings[state.category] || [];
-            currentCompetitorScores = ranking.find(r => r.competitor_id === state.competitor_id);
-
-            if (currentCompetitorScores?.competitor) {
-              membersHtml = currentCompetitorScores.competitor
-                .split("/")
-                .map(name => name.trim())
-                .join("<br>");
-            } else {
-              membersHtml = state.competitor || "";
-            }
-          } catch (err) {
-            console.error("Ranking fetch failed:", err);
+          // prevent unnecessary re-renders (avoid flicker)
+          if (JSON.stringify(state) === JSON.stringify(lastState)) {
+            return;
           }
+          lastState = state;
 
-          // Ranking rows
-          const rankingRows = ranking.map(r => {
-            const isCurrent = r.competitor_id === state.competitor_id;
-            return `<tr class="${isCurrent ? "highlight" : ""}">
-              <td>${r.position}</td>
-              <td>${r.competitor}</td>
-              <td>${r.club}</td>
-              <td class="score-col">${Number(r.total_score).toFixed(3)}</td>
-            </tr>`;
-          }).join("");
+          const content = document.getElementById("content");
 
-          // Scores
-          const executionScore = currentCompetitorScores?.execution_score || 0;
-          const artistryScore = currentCompetitorScores?.artistry_score || 0;
-          const difficultyScore = currentCompetitorScores?.difficulty_score || 0;
-
-          content.innerHTML = `
-            <div class="ranking-box">
-              <div class="ranking-content">
-                <div class="ranking-title">Ranking ${state.category}</div>
-                <table class="ranking-table">
-                  <thead>
-                    <tr><th>Pos</th><th>Team</th><th>Club</th><th>Score</th></tr>
-                  </thead>
-                  <tbody>${rankingRows}</tbody>
-                </table>
+          if (state.mode === "banner") {
+            content.innerHTML = `
+              <div class="banner">
+                <img src="/static/banner.jpg" alt="Concurs Banner">
               </div>
-            </div>
-            <div class="competitor-box">
-              <div class="competitor-content">
-                <div class="title">Concursul Național<br>de Gimnastică Aerobică</div>
-                <div class="competitor-name">${membersHtml}</div>
-                <div class="club-category">${state.club} • ${state.category}</div>
-                <div class="scores-breakdown">
-                  <div class="score-item execution">
-                    <div class="score-label">Execution</div>
-                    <div class="score-value">${executionScore.toFixed(3)}</div>
-                  </div>
-                  <div class="score-item artistry">
-                    <div class="score-label">Artistry</div>
-                    <div class="score-value">${artistryScore.toFixed(3)}</div>
-                  </div>
-                  <div class="score-item difficulty">
-                    <div class="score-label">Difficulty</div>
-                    <div class="score-value">${difficultyScore.toFixed(3)}</div>
-                  </div>
+            `;
+          } else if (state.mode === "competitor") {
+            let ranking = [];
+            let currentCompetitorScores = null;
+            let membersHtml = "";
+
+            try {
+              const rRes = await fetch("/api/rankings");
+              const allRankings = await rRes.json();
+              ranking = allRankings[state.category] || [];
+              currentCompetitorScores = ranking.find(r => r.competitor_id === state.competitor_id);
+
+              if (currentCompetitorScores?.competitor) {
+                membersHtml = currentCompetitorScores.competitor
+                  .split("/")
+                  .map(name => name.trim())
+                  .join("<br>");
+              } else {
+                membersHtml = state.competitor || "";
+              }
+            } catch (err) {
+              console.error("Ranking fetch failed:", err);
+            }
+
+            const rankingRows = ranking.map(r => {
+              const isCurrent = r.competitor_id === state.competitor_id;
+              return `<tr class="${isCurrent ? "highlight" : ""}">
+                <td>${r.position}</td>
+                <td>${r.competitor}</td>
+                <td>${r.club}</td>
+                <td class="score-col">${Number(r.total_score).toFixed(3)}</td>
+              </tr>`;
+            }).join("");
+
+            const executionScore = currentCompetitorScores?.execution_score || 0;
+            const artistryScore = currentCompetitorScores?.artistry_score || 0;
+            const difficultyScore = currentCompetitorScores?.difficulty_score || 0;
+
+            content.innerHTML = `
+              <div class="ranking-box">
+                <div class="ranking-content">
+                  <div class="ranking-title">Ranking ${state.category}</div>
+                  <table class="ranking-table">
+                    <thead>
+                      <tr><th>Pos</th><th>Team</th><th>Club</th><th>Score</th></tr>
+                    </thead>
+                    <tbody>${rankingRows}</tbody>
+                  </table>
                 </div>
-                <div class="total-score">⭐ Total Score: ${Number(state.total_score).toFixed(3)}</div>
               </div>
-            </div>
-          `;
+              <div class="competitor-box">
+                <div class="competitor-content">
+                  <div class="title">Concursul Național<br>de Gimnastică Aerobică</div>
+                  <div class="competitor-name">${membersHtml}</div>
+                  <div class="club-category">${state.club} • ${state.category}</div>
+                  <div class="scores-breakdown">
+                    <div class="score-item execution">
+                      <div class="score-label">Execution</div>
+                      <div class="score-value">${executionScore.toFixed(3)}</div>
+                    </div>
+                    <div class="score-item artistry">
+                      <div class="score-label">Artistry</div>
+                      <div class="score-value">${artistryScore.toFixed(3)}</div>
+                    </div>
+                    <div class="score-item difficulty">
+                      <div class="score-label">Difficulty</div>
+                      <div class="score-value">${difficultyScore.toFixed(3)}</div>
+                    </div>
+                  </div>
+                  <div class="total-score">⭐ Total Score: ${Number(state.total_score).toFixed(3)}</div>
+                </div>
+              </div>
+            `;
+          }
+        } catch (err) {
+          console.error("State fetch failed:", err);
         }
       }
 
