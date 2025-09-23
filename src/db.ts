@@ -75,7 +75,7 @@ export const createTables = async () => {
     id SERIAL PRIMARY KEY,
     competitor_id INT NOT NULL UNIQUE REFERENCES competitors(id) ON DELETE CASCADE,
     validated_at TIMESTAMP DEFAULT NOW(),
-    total_score NUMERIC(6,2) NOT NULL
+    total_score NUMERIC(6,3) NOT NULL
   );
 
   -- Shown competitor (on screen)
