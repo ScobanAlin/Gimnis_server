@@ -41,7 +41,7 @@ export const createTables = async () => {
     competitor_id INT REFERENCES competitors(id) ON DELETE CASCADE,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL,
+    email TEXT NOT NULL,
     age INT NOT NULL,
     sex CHAR(1) CHECK (sex IN ('M','F'))
   );
