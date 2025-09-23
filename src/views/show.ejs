@@ -1,184 +1,451 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Live Show</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap");
 
-      * { margin: 0; padding: 0; box-sizing: border-box; }
+<head>
+  <title>Live Show</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap");
 
-      body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #ffe066 0%, #ff6b35 50%, #f7931e 100%);
-        color: white;
-        overflow: hidden;
-        height: 100vh;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffe066 0%, #ff6b35 50%, #f7931e 100%);
+      color: white;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Animated background particles */
+    .bg-animation {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) {
+      width: 80px;
+      height: 80px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .particle:nth-child(2) {
+      width: 60px;
+      height: 60px;
+      left: 20%;
+      animation-delay: 2s;
+    }
+
+    .particle:nth-child(3) {
+      width: 40px;
+      height: 40px;
+      left: 70%;
+      animation-delay: 4s;
+    }
+
+    .particle:nth-child(4) {
+      width: 120px;
+      height: 120px;
+      right: 10%;
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.7;
       }
 
-      /* Animated background particles */
-      .bg-animation {
-        position: absolute;
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+      }
+    }
+
+    #content {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* Banner mode */
+    .banner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+
+    .banner img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* Ranking scoreboard */
+    .ranking-box {
+      width: 40%;
+      height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 30px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      border-right: 4px solid #ffd700;
+      position: relative;
+    }
+
+    .ranking-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .ranking-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .ranking-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #ffd700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #ffd700, #ffa500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    table.ranking-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 15px;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+    }
+
+    table.ranking-table th {
+      padding: 18px 15px;
+      text-align: center;
+      font-size: 16px;
+      background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
+      color: #003366;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+    }
+
+    table.ranking-table td {
+      padding: 15px 12px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    table.ranking-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    table.ranking-table tr.highlight {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 165, 0, 0.4)) !important;
+      font-weight: 700;
+      color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9) !important;
+      border: 2px solid #ffd700;
+    }
+
+    .score-col {
+      font-weight: 800;
+      color: #ffd700 !important;
+      font-size: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(255, 215, 0, 0.3) !important;
+    }
+
+    .ranking-table td:first-child {
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .ranking-table tr:nth-child(1) td:first-child {
+      color: #ffd700 !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 12px rgba(255, 215, 0, 0.5);
+    }
+
+    .ranking-table tr:nth-child(2) td:first-child {
+      color: #e6e6e6 !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(192, 192, 192, 0.4);
+    }
+
+    .ranking-table tr:nth-child(3) td:first-child {
+      color: #daa520 !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(205, 127, 50, 0.4);
+    }
+
+    /* Competitor view */
+    .competitor-box {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px;
+      background: linear-gradient(135deg, #ffe066 0%, #ff6b35 50%, #f7931e 100%);
+      position: relative;
+    }
+
+    .competitor-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: 0;
+    }
+
+    .competitor-content {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .title {
+      font-size: 42px;
+      font-weight: 900;
+      margin-bottom: 40px;
+      color: #003366;
+      text-shadow: 0 3px 6px rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .competitor-name {
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 25px;
+      color: #ffffff;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.8);
+      line-height: 1.3;
+    }
+
+    .club-category {
+      font-size: 24px;
+      color: #003366;
+      font-weight: 700;
+      margin: 15px 0;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 12px 25px;
+      border-radius: 25px;
+      text-shadow: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .scores-breakdown {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 35px 0;
+      flex-wrap: wrap;
+    }
+
+    .score-item {
+      flex: 1;
+      min-width: 130px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      border: 3px solid transparent;
+    }
+
+    .score-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: #003366;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .score-value {
+      font-size: 36px;
+      font-weight: 900;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .score-item.execution {
+      border-color: #ff6b35;
+    }
+
+    .score-item.execution .score-value {
+      color: #cc2900;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 107, 53, 0.3);
+    }
+
+    .score-item.artistry {
+      border-color: #f7931e;
+    }
+
+    .score-item.artistry .score-value {
+      color: #cc5500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 8px rgba(247, 147, 30, 0.3);
+    }
+
+    .score-item.difficulty {
+      border-color: #ffd700;
+    }
+
+    .score-item.difficulty .score-value {
+      color: #cc8800;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 214, 0, 0.3);
+    }
+
+    .total-score {
+      font-size: 72px;
+      font-weight: 900;
+      margin-top: 30px;
+      color: #ffffff;
+      text-shadow: 0 6px 12px rgba(0, 0, 0, 0.7), 0 3px 6px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 215, 0, 0.4);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px 40px;
+      border-radius: 25px;
+      border: 3px solid #ffd700;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #content {
+        flex-direction: column;
+      }
+
+      .ranking-box,
+      .competitor-box {
         width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: -1;
+        height: 50vh;
       }
-      .particle { position: absolute; background: rgba(255, 255, 255, 0.1); border-radius: 50%; animation: float 6s ease-in-out infinite; }
-      .particle:nth-child(1){ width: 80px; height: 80px; left: 10%; animation-delay: 0s;}
-      .particle:nth-child(2){ width: 60px; height: 60px; left: 20%; animation-delay: 2s;}
-      .particle:nth-child(3){ width: 40px; height: 40px; left: 70%; animation-delay: 4s;}
-      .particle:nth-child(4){ width: 120px; height: 120px; right: 10%; animation-delay: 1s;}
-      @keyframes float { 0%,100%{ transform: translateY(0px) rotate(0deg); opacity: 0.7;} 50%{ transform: translateY(-20px) rotate(180deg); opacity: 1;} }
 
-      #content { display: flex; width: 100%; height: 100vh; position: relative; }
-
-      /* Banner mode */
-      .banner { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: black; }
-      .banner img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-      /* Ranking scoreboard */
-      .ranking-box {
-        width: 40%; height: 100vh;
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        padding: 30px; box-sizing: border-box;
-        overflow-y: auto; border-right: 4px solid #ffd700;
-        position: relative;
+      .total-score {
+        font-size: 48px;
+        padding: 15px 30px;
       }
-      .ranking-box::before {
-        content: ""; position: absolute; top: 0; left: 0; right: 0; height: 100%;
-        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFD700' fill-opacity='0.05'%3E%3Ccircle cx='7' cy='7' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        z-index: 0;
+
+      .competitor-name {
+        font-size: 36px;
       }
-      .ranking-content { position: relative; z-index: 1; }
-      .ranking-title {
-        font-size: 32px; font-weight: 800; margin-bottom: 25px; text-align: center;
-        color: #ffd700; text-transform: uppercase; letter-spacing: 2px;
-        background: linear-gradient(45deg, #ffd700, #ffa500);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+      .score-value {
+        font-size: 28px;
       }
-      table.ranking-table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.08); border-radius: 15px; overflow: hidden; }
-      table.ranking-table th {
-        padding: 18px 15px; text-align: center; font-size: 16px;
-        background: linear-gradient(135deg, #ffd700 0%, #ffa500 100%);
-        color: #003366; font-weight: 700; text-transform: uppercase;
-      }
-      table.ranking-table td {
-        padding: 15px 12px; text-align: center; font-size: 16px; font-weight: 500;
-        border-bottom: 1px solid rgba(255,215,0,0.1);
-      }
-      table.ranking-table tr:nth-child(even){ background: rgba(255,255,255,0.05);}
-      table.ranking-table tr.highlight { background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,165,0,0.3)) !important; font-weight: 700; color: #ffd700; }
+    }
+  </style>
+</head>
 
-      .score-col { font-weight: 700; color: #ffd700; font-size: 18px; }
-      .ranking-table td:first-child { font-weight: 800; font-size: 18px; }
-      .ranking-table tr:nth-child(1) td:first-child{ color: #ffd700;}
-      .ranking-table tr:nth-child(2) td:first-child{ color: #c0c0c0;}
-      .ranking-table tr:nth-child(3) td:first-child{ color: #cd7f32;}
+<body>
+  <div class="bg-animation">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
 
-      /* Competitor view */
-      .competitor-box { width: 60%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 50px; background: linear-gradient(135deg, #ffe066 0%, #ff6b35 50%, #f7931e 100%);}
-      .competitor-content { text-align: center; }
-      .title { font-size: 42px; font-weight: 900; margin-bottom: 40px; background: linear-gradient(45deg, #003366, #0066cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.competitor-name {
-  font-size: 56px;
-  font-weight: 900;
-  margin-bottom: 25px;
-  background: linear-gradient(45deg, #ffffff, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.3;
+  <div id="content"></div>
 
-}      .club-category { font-size: 24px; color: #003366; font-weight: 700; margin: 15px 0; background: rgba(255,255,255,0.9); padding: 10px 20px; border-radius: 20px; }
-      .scores-breakdown { display: flex; justify-content: space-between; gap: 15px; margin: 30px 0; flex-wrap: wrap;}
-      .score-item { flex: 1; min-width: 120px; background: rgba(255,255,255,0.9); border-radius: 15px; padding: 20px 15px; text-align: center;}
-      .score-label { font-size: 14px; font-weight: 700; color: #003366; margin-bottom: 10px;}
-      .score-value { font-size: 32px; font-weight: 900;}
-      .score-item.execution .score-value { color: #ff6b35;}
-      .score-item.artistry .score-value { color: #f7931e;}
-      .score-item.difficulty .score-value { color: #ffe066;}
-.total-score {
-  font-size: 64px;
-  font-weight: 900;
-  margin-top: 25px;
-  background: linear-gradient(45deg, lab(86.93% -1.92 87.14), #ffa500, #ffd700);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  <script>
+    let lastState = null;
 
+    async function loadState() {
+      try {
+        const res = await fetch("/api/show/state");
+        const state = await res.json();
 
-}
-      /* Responsive */
-      @media (max-width: 768px){ #content{flex-direction:column;} .ranking-box,.competitor-box{width:100%;height:50vh;} }
-    </style>
-  </head>
-  <body>
-    <div class="bg-animation">
-      <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
-    </div>
+        // prevent unnecessary re-renders (avoid flicker)
+        if (JSON.stringify(state) === JSON.stringify(lastState)) {
+          return;
+        }
+        lastState = state;
 
-    <div id="content"></div>
+        const content = document.getElementById("content");
 
-    <script>
-      let lastState = null;
-
-      async function loadState() {
-        try {
-          const res = await fetch("/api/show/state");
-          const state = await res.json();
-
-          // prevent unnecessary re-renders (avoid flicker)
-          if (JSON.stringify(state) === JSON.stringify(lastState)) {
-            return;
-          }
-          lastState = state;
-
-          const content = document.getElementById("content");
-
-          if (state.mode === "banner") {
-            content.innerHTML = `
+        if (state.mode === "banner") {
+          content.innerHTML = `
               <div class="banner">
                 <img src="/static/banner.jpg" alt="Concurs Banner">
               </div>
             `;
-          } else if (state.mode === "competitor") {
-            let ranking = [];
-            let currentCompetitorScores = null;
-            let membersHtml = "";
+        } else if (state.mode === "competitor") {
+          let ranking = [];
+          let currentCompetitorScores = null;
+          let membersHtml = "";
 
-            try {
-              const rRes = await fetch("/api/rankings");
-              const allRankings = await rRes.json();
-              ranking = allRankings[state.category] || [];
-              currentCompetitorScores = ranking.find(r => r.competitor_id === state.competitor_id);
+          try {
+            const rRes = await fetch("/api/rankings");
+            const allRankings = await rRes.json();
+            ranking = allRankings[state.category] || [];
+            currentCompetitorScores = ranking.find(r => r.competitor_id === state.competitor_id);
 
-              if (currentCompetitorScores?.competitor) {
-                membersHtml = currentCompetitorScores.competitor
-                  .split("/")
-                  .map(name => name.trim())
-                  .join("<br>");
-              } else {
-                membersHtml = state.competitor || "";
-              }
-            } catch (err) {
-              console.error("Ranking fetch failed:", err);
+            if (currentCompetitorScores?.competitor) {
+              membersHtml = currentCompetitorScores.competitor
+                .split("/")
+                .map(name => name.trim())
+                .join("<br>");
+            } else {
+              membersHtml = state.competitor || "";
             }
+          } catch (err) {
+            console.error("Ranking fetch failed:", err);
+          }
 
-            const rankingRows = ranking.map(r => {
-              const isCurrent = r.competitor_id === state.competitor_id;
-              return `<tr class="${isCurrent ? "highlight" : ""}">
+          const rankingRows = ranking.map(r => {
+            const isCurrent = r.competitor_id === state.competitor_id;
+            return `<tr class="${isCurrent ? "highlight" : ""}">
                 <td>${r.position}</td>
                 <td>${r.competitor}</td>
                 <td>${r.club}</td>
                 <td class="score-col">${Number(r.total_score).toFixed(3)}</td>
               </tr>`;
-            }).join("");
+          }).join("");
 
-            const executionScore = currentCompetitorScores?.execution_score || 0;
-            const artistryScore = currentCompetitorScores?.artistry_score || 0;
-            const difficultyScore = currentCompetitorScores?.difficulty_score || 0;
+          const executionScore = currentCompetitorScores?.execution_score || 0;
+          const artistryScore = currentCompetitorScores?.artistry_score || 0;
+          const difficultyScore = currentCompetitorScores?.difficulty_score || 0;
 
-            content.innerHTML = `
+          content.innerHTML = `
               <div class="ranking-box">
                 <div class="ranking-content">
                   <div class="ranking-title">Ranking ${state.category}</div>
@@ -213,14 +480,15 @@
                 </div>
               </div>
             `;
-          }
-        } catch (err) {
-          console.error("State fetch failed:", err);
         }
+      } catch (err) {
+        console.error("State fetch failed:", err);
       }
+    }
 
-      loadState();
-      setInterval(loadState, 3000);
-    </script>
-  </body>
+    loadState();
+    setInterval(loadState, 3000);
+  </script>
+</body>
+
 </html>
