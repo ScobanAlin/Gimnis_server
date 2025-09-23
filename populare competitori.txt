@@ -1,0 +1,1751 @@
+-- Categoria: Individual Women - Youth
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Patricia', 'Ica', 'patricia.ica@example.com', 13, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Mara', 'Vlad', 'mara.vlad@example.com', 13, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ioana Sophia', 'Dumitru', 'ioana.sophia.dumitru@example.com', 13, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Victoria', 'Munteanu', 'victoria.munteanu@example.com', 13, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Kira', 'Ceban', 'kira.ceban@example.com', 13, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ana Maria', 'Filimon', 'ana.maria.filimon@example.com', 13, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Clara', 'Prichindel', 'clara.prichindel@example.com', 13, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Antonia', 'Kukuneshoska', 'antonia.kukuneshoska@example.com', 13, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Sara', 'Neagu', 'sara.neagu@example.com', 13, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ema', 'Holban', 'ema.holban@example.com', 13, 'F');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Kristina', 'Varvariuc', 'kristina.varvariuc@example.com', 13, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria', 'Plugariu', 'maria.plugariu@example.com', 13, 'F');
+
+-- 13
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Amalia', 'Negrescu', 'amalia.negrescu@example.com', 13, 'F');
+
+-- 14
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Iris', 'Apostol', 'iris.apostol@example.com', 13, 'F');
+
+-- 15
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'CSM IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Daria', 'Budeanu-Zup', 'daria.budeanu-zup@example.com', 13, 'F');
+
+-- 16
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Vita', 'Cuteinicova', 'vita.cuteinicova@example.com', 13, 'F');
+
+-- 17
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Kira', 'Ghirjeva', 'kira.ghirjeva@example.com', 13, 'F');
+
+-- 18
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alessia', 'Ene', 'alessia.ene@example.com', 13, 'F');
+
+-- 19
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS IT’S WHAT I LOVE CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Sara Andreea', 'Avram', 'sara.andreea.avram@example.com', 13, 'F');
+
+-- 20
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Rania', 'Popescu', 'rania.popescu@example.com', 13, 'F');
+
+-- 21
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Riana', 'Suteu', 'riana.suteu@example.com', 13, 'F');
+
+-- 22
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Kateryna', 'Kuznietsova', 'kateryna.kuznietsova@example.com', 13, 'F');
+
+-- 23
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Nicoleta', 'Pirtu', 'nicoleta.pirtu@example.com', 13, 'F');
+
+-- 24
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Xenia', 'Ursu', 'xenia.ursu@example.com', 13, 'F');
+
+-- 25
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS IT’S WHAT I LOVE CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Diana Ioana', 'David', 'diana.ioana.david@example.com', 13, 'F');
+
+-- 26
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Miruna', 'Georgescu', 'miruna.georgescu@example.com', 13, 'F');
+
+-- 27
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Liliane', 'Mihai', 'liliane.mihai@example.com', 13, 'F');
+
+-- 28
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ecaterina', 'Tuluc', 'ecaterina.tuluc@example.com', 13, 'F');
+
+-- 29
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Rebecca', 'Misu', 'rebecca.misu@example.com', 13, 'F');
+
+-- 30
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ilinca', 'Goncear', 'ilinca.goncear@example.com', 13, 'F');
+
+-- 31
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS IT’S WHAT I LOVE CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Amalia', 'Iancu', 'amalia.iancu@example.com', 13, 'F');
+
+-- 32
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Amalia', 'Vespan', 'amalia.vespan@example.com', 13, 'F');
+
+
+-- Categoria: Trio - Kids Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Kids Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Mirian', 'Gavrila', 'mirian.gavrila@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Erin Anastasia', 'Popa', 'erin.anastasia.popa@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Ilinca Valentina', 'Apostol', 'ilinca.valentina.apostol@example.com', 7, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Kids Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Amalia', 'Bucataru', 'amalia.bucataru@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Jantea', 'anastasia.jantea@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Adelina', 'Jantea', 'adelina.jantea@example.com', 7, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Kids Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maria', 'Riner', 'maria.riner@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Suvari', 'eva.suvari@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Miroslava', 'Verhovetchi', 'miroslava.verhovetchi@example.com', 7, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Draghicescu', 'eva.draghicescu@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Kapca', 'antonia.kapca@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Alexandra', 'Kapca', 'alexandra.kapca@example.com', 7, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Kids Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Varvara', 'Ivaschiv', 'varvara.ivaschiv@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Arina', 'Sontea', 'arina.sontea@example.com', 7, 'F'),
+  (currval('competitors_id_seq'), 'Miroslava', 'Topal', 'miroslava.topal@example.com', 7, 'F');
+
+
+-- Categoria: Individual Men - Youth
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Robert Ștefan', 'Ristea', 'robert.stefan.ristea@example.com', 13, 'M');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Luca Ionuț', 'Greu', 'luca.ionut.greu@example.com', 13, 'M');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'David', 'Dinu', 'david.dinu@example.com', 13, 'M');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Vlad Theodor', 'Ciurea', 'vlad.theodor.ciurea@example.com', 13, 'M');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alexandru-Ștefan', 'Talaba', 'alexandru.stefan.talaba@example.com', 13, 'M');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Artiom', 'Covaliov', 'artiom.covaliov@example.com', 13, 'M');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Radu', 'Perețeanu', 'radu.pereteanu@example.com', 13, 'M');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'David Pavel', 'Porcus', 'david.pavel.porcus@example.com', 13, 'M');
+
+
+
+-- Categoria: Mixed Pair - National Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - National Development', 'ACS AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alexandru', 'Stancu', 'alexandru.stancu@example.com', 10, 'M'),
+  (currval('competitors_id_seq'), 'Ioana', 'Stancu', 'ioana.stancu@example.com', 9, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - National Development', 'ACS DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Sara', 'Pîrlea', 'sara.pirlea@example.com', 9, 'F'),
+  (currval('competitors_id_seq'), 'Eric', 'Burciu', 'eric.burciu@example.com', 10, 'M');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - National Development', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Mathias', 'Iftinchi', 'mathias.iftinchi@example.com', 10, 'M'),
+  (currval('competitors_id_seq'), 'Patricia', 'Sirbu', 'patricia.sirbu@example.com', 9, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Daria', 'Topciu', 'daria.topciu@example.com', 9, 'F'),
+  (currval('competitors_id_seq'), 'Tudor', 'Cătur', 'tudor.catur@example.com', 10, 'M');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Emilia', 'Pascu', 'emilia.pascu@example.com', 9, 'F'),
+  (currval('competitors_id_seq'), 'Luca', 'Roibu', 'luca.roibu@example.com', 10, 'M');
+
+-- Categoria: Individual Women - Kids Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alexandra', 'Kapca', 'alexandra.kapca@example.com', 7, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Olivia Ioana', 'Constantin', 'olivia.ioana.constantin@example.com', 7, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva', 'Gomeaja', 'eva.gomeaja@example.com', 7, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria', 'Riner', 'maria.riner@example.com', 7, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva', 'Suvari', 'eva.suvari@example.com', 7, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva', 'Draghicescu', 'eva.draghicescu@example.com', 7, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Antonia', 'Kapca', 'antonia.kapca@example.com', 7, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva', 'Tabarca', 'eva.tabarca@example.com', 7, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Amalia', 'Bucataru', 'amalia.bucataru@example.com', 7, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Medeea', 'Castellano', 'medeea.castellano@example.com', 7, 'F');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Emilia', 'Olteanu', 'emilia.olteanu@example.com', 7, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ingrid', 'Moraru', 'ingrid.moraru@example.com', 7, 'F');
+
+-- 13
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maya', 'Paparău', 'maya.paparau@example.com', 7, 'F');
+
+-- 14
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Mihaela Georgiana', 'Floroiu', 'mihaela.georgiana.floroiu@example.com', 7, 'F');
+
+-- 15
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ariana', 'Kacso', 'ariana.kacso@example.com', 7, 'F');
+
+-- 16
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Liana', 'Craciunel', 'liana.craciunel@example.com', 7, 'F');
+
+-- 17
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ana', 'Sabau', 'ana.sabau@example.com', 7, 'F');
+
+-- 18
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Sara', 'Vinga', 'sara.vinga@example.com', 7, 'F');
+
+-- 19
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alexandra', 'Duiculescu', 'alexandra.duiculescu@example.com', 7, 'F');
+
+-- 20
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Kids Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Miroslava', 'Vervovetchi', 'miroslava.vervovetchi@example.com', 7, 'F');
+
+
+-- Categoria: Mixed Pair - Juniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Smaranda', 'Geamanu', 'smaranda.geamanu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'David', 'Marin', 'david.marin@example.com', 16, 'M');
+
+
+-- Categoria: Trio - National Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Emma', 'Chismore', 'emma.chismore@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Iasmina', 'Cicirean', 'iasmina.cicirean@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Andreea', 'Lazarescu', 'andreea.lazarescu@example.com', 10, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alexia', 'Cotoman', 'alexia.cotoman@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Jerlaianu', 'antonia.jerlaianu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Baschir', 'antonia.baschir@example.com', 10, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Natalia', 'Remus', 'natalia.remus@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Eva Maria', 'Leuca', 'eva.maria.leuca@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Daria Alexandra', 'Stanciulescu', 'daria.alexandra.stanciulescu@example.com', 10, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Mara-Sofia', 'Cace', 'mara.sofia.cace@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Natalia-Constantina', 'Nica', 'natalia.constantina.nica@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Maria-Irina', 'Manache', 'maria.irina.manache@example.com', 10, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maya', 'Nica', 'maya.nica@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Pirlea', 'ana.pirlea@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Medeea', 'Castellano', 'medeea.castellano@example.com', 10, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Medeea', 'Axente', 'medeea.axente@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Ivașcu', 'anastasia.ivascu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Adelle', 'Sorică', 'adelle.sorica@example.com', 10, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Anisia', 'Chirica', 'anisia.chirica@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Tabarca', 'eva.tabarca@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Andreea', 'Mina', 'andreea.mina@example.com', 10, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Antonia', 'Nae', 'antonia.nae@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Patricia', 'Sirbu', 'patricia.sirbu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Mathias', 'Iftinchi', 'mathias.iftinchi@example.com', 10, 'M');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Izabela', 'Badila', 'izabela.badila@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Adelina', 'Chistol', 'adelina.chistol@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Gomeaja', 'eva.gomeaja@example.com', 10, 'F');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maria', 'Zubic', 'maria.zubic@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Miroslava', 'Palamarciuc', 'miroslava.palamarciuc@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Topal', 'anastasia.topal@example.com', 10, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alice', 'Luca', 'alice.luca@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Albu', 'antonia.albu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Nadia', 'Bondar', 'nadia.bondar@example.com', 10, 'F');
+
+-- 13
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Smaranda', 'Balaur', 'smaranda.balaur@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Bugan', 'anastasia.bugan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Marina', 'Leahu', 'marina.leahu@example.com', 10, 'F');
+
+-- 14
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Thea', 'Geanaliu Nicolae', 'nicolae.geanaliu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Raisa', 'Bologa', 'raisa.bologa@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Laura', 'Stoica', 'laura.stoica@example.com', 10, 'F');
+
+-- 15
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Katalina', 'Corbu', 'katalina.corbu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Stan', 'sara.stan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Vasile', 'ana.vasile@example.com', 10, 'F');
+
+-- 16
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'ACS ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI / CS UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Ana', 'Stan', 'ana.stan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Pavel', 'maria.pavel@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Iris', 'Ionescu', 'iris.ionescu@example.com', 10, 'F');
+
+-- 17
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Varvara', 'Formusatii', 'varvara.formusatii@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anna', 'Demenina', 'anna.demenina@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Mancas', 'maria.mancas@example.com', 10, 'F');
+
+-- 18
+INSERT INTO competitors (category, club)
+VALUES ('Trio - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Gorosov', 'eva.gorosov@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Furtuna', 'eva.furtuna@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Taisia', 'Vicol', 'taisia.vicol@example.com', 10, 'F');
+
+
+-- Categoria: Individual Women - Juniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alessia', 'Coman', 'alessia.coman@example.com', 16, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Gabriela', 'Ganes', 'gabriela.ganes@example.com', 16, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'CS UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Mihaela', 'Manda', 'mihaela.manda@example.com', 16, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Evelina', 'Sterghite', 'evelina.sterghite@example.com', 16, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Xenia', 'Pislari', 'xenia.pislari@example.com', 16, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'ACS AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Andra', 'Cuciureanu', 'andra.cuciureanu@example.com', 16, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Daria', 'Kasler', 'daria.kasler@example.com', 16, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Amalia-Maria', 'Ghioc', 'amalia.maria.ghioc@example.com', 16, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'CS UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Carina', 'Stan', 'carina.stan@example.com', 16, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Olga', 'Tcacisin', 'olga.tcacisin@example.com', 16, 'F');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Diana-Georgiana', 'Borcilă', 'diana.georgiana.borcila@example.com', 16, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Taisia', 'Dembitcaia', 'taisia.dembitcaia@example.com', 16, 'F');
+
+-- 13
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'CS UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ingrid', 'Mușat', 'ingrid.musat@example.com', 16, 'F');
+
+-- 14
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ana', 'Draghici', 'ana.draghici@example.com', 16, 'F');
+
+-- 15
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria', 'Toma', 'maria.toma@example.com', 16, 'F');
+
+-- Categoria: Individual Men - Juniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'David', 'Marin', 'david.marin@example.com', 16, 'M');
+
+-- Categoria: Individual Women - National Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Anna', 'Sapogovscaia', 'anna.sapogovscaia@example.com', 10, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Clara', 'Pădure', 'clara.padure@example.com', 10, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Iris', 'Ionescu', 'iris.ionescu@example.com', 10, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Sara', 'Pirlea', 'sara.pirlea@example.com', 10, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Medeea', 'Axente', 'medeea.axente@example.com', 10, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Izabela', 'Nemeti', 'izabela.nemeti@example.com', 10, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Nadia', 'Bondar', 'nadia.bondar@example.com', 10, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Natalia', 'Papa', 'natalia.papa@example.com', 10, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria', 'Pavel', 'maria.pavel@example.com', 10, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria', 'Zubic', 'maria.zubic@example.com', 10, 'F');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva', 'Gorosov', 'eva.gorosov@example.com', 10, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Anastasia', 'Bejenari', 'anastasia.bejenari@example.com', 10, 'F');
+
+-- 13
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ioana', 'Stancu', 'ioana.stancu@example.com', 10, 'F');
+
+-- 14
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva Maria', 'Leuca', 'eva.maria.leuca@example.com', 10, 'F');
+
+-- 15
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Natalia Maria', 'Remus', 'natalia.maria.remus@example.com', 10, 'F');
+
+-- 16
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Mara-Sofia', 'Cace', 'mara.sofia.cace@example.com', 10, 'F');
+
+-- 17
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Natalia-Constantina', 'Nica', 'natalia.constantina.nica@example.com', 10, 'F');
+
+-- 18
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Evelyn', 'Gheorghe', 'evelyn.gheorghe@example.com', 10, 'F');
+
+-- 19
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ana', 'Pirlea', 'ana.pirlea@example.com', 10, 'F');
+
+-- 20
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Iris', 'Crețan', 'iris.cretan@example.com', 10, 'F');
+
+-- 21
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI / ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ana', 'Stan', 'ana.stan@example.com', 10, 'F');
+
+-- 22
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ileana', 'Apostolescu', 'ileana.apostolescu@example.com', 10, 'F');
+
+-- 23
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Ema', 'Diaconu', 'ema.diaconu@example.com', 10, 'F');
+
+-- 24
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS DOUBLE D');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria-Irina', 'Manache', 'maria.irina.manache@example.com', 10, 'F');
+
+-- 25
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Anais', 'Roman', 'anais.roman@example.com', 10, 'F');
+
+-- 26
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Medeea', 'Bărbieru', 'medeea.barbieru@example.com', 10, 'F');
+
+-- 27
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Thea', 'Geanaliu Nicolae', 'thea.geanaliu@example.com', 10, 'F');
+
+-- 28
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Anastasia', 'Ivașcu', 'anastasia.ivasco@example.com', 10, 'F');
+
+-- 29
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maria Melisa', 'Dedu', 'maria.melisa.dedu@example.com', 10, 'F');
+
+-- 30
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Anna', 'Petrov', 'anna.petrov@example.com', 10, 'F');
+
+-- 31
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Izabela', 'Badila', 'izabela.badila@example.com', 10, 'F');
+
+-- 32
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Carolina', 'Tudosoiu', 'carolina.tudosoiu@example.com', 10, 'F');
+
+-- 33
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Adelle', 'Sorică', 'adelle.sorica@example.com', 10, 'F');
+
+-- 34
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Patricia', 'Șirbu', 'patricia.sirbu@example.com', 10, 'F');
+
+-- 35
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Daria Alexandra', 'Stanciulescu', 'daria.alexandra.stanciulescu@example.com', 10, 'F');
+
+-- 36
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Maya', 'Nica', 'maya.nica@example.com', 10, 'F');
+
+-- 37
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Sofia', 'Moraraș', 'sofia.moraras@example.com', 10, 'F');
+
+-- 38
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Daria', 'Topciu', 'daria.topciu@example.com', 10, 'F');
+
+-- 39
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Adelina', 'Chistol', 'adelina.chistol@example.com', 10, 'F');
+
+-- 40
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eva', 'Furtuna', 'eva.furtuna@example.com', 10, 'F');
+
+-- 41
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Nadia Maria', 'Zelesneac', 'nadia.maria.zelesneac@example.com', 10, 'F');
+
+-- 42
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Antonia', 'Gadescu', 'antonia.gadescu@example.com', 10, 'F');
+
+-- 43
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Adelina', 'Șchiopu', 'adelina.schiopu@example.com', 10, 'F');
+
+-- 44
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Antonia', 'Nae', 'antonia.nae@example.com', 10, 'F');
+
+-- 45
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Bianca', 'Graure', 'bianca.graure@example.com', 10, 'F');
+
+-- 46
+INSERT INTO competitors (category, club)
+VALUES ('Individual Women - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Victoria', 'Lipovan', 'victoria.lipovan@example.com', 10, 'F');
+
+-- Categoria: Individual Men - Kids Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Kids Development', 'ACS LUISA DEDU GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Octavian Iustin', 'Ribu', 'octavian.iustin.ribu@example.com', 8, 'M');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Kids Development', 'CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Nicolas', 'Gheorghiu', 'nicolas.gheorghiu@example.com', 8, 'M');
+
+-- Categoria: Mixed Pair - Youth
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'David Pavel', 'Porcus', 'david.pavel.porcus@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Ioana Sophia', 'Dumitru', 'ioana.sophia.dumitru@example.com', 13, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI / UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'David', 'Dinu', 'david.dinu@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Sophie', 'Nastase', 'sophie.nastase@example.com', 13, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Artiom', 'Covaliov', 'artiom.covaliov@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Anna', 'Sapogovscaia', 'anna.sapogovscaia@example.com', 13, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'CSS1 CONSTANȚA / CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Nadia', 'Zelesneac', 'nadia.zelesneac@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Robert Ștefan', 'Ristea', 'robert.stefan.ristea@example.com', 13, 'M');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Ana Maria', 'Filimon', 'ana.maria.filimon@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Alexandru-Ștefan', 'Talaba', 'alexandru.stefan.talaba@example.com', 13, 'M');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Luca Ionuț', 'Greu', 'luca.ionut.greu@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Natalis Georgiana', 'Chiosea', 'natalis.georgiana.chiosea@example.com', 13, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Mixed Pair - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Vlad Theodor', 'Ciurea', 'vlad.theodor.ciurea@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Rebecca', 'Misu', 'rebecca.misu@example.com', 13, 'F');
+
+-- Categoria: Individual Men - National Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alexandru', 'Tudorache', 'alexandru.tudorache@example.com', 10, 'M');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Mathias', 'Iftinchi', 'mathias.iftinchi@example.com', 10, 'M');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - National Development', 'A.C.S AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Alexandru', 'Stancu', 'alexandru.stancu@example.com', 10, 'M');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Eric', 'Burciu', 'eric.burciu@example.com', 10, 'M');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Tudor', 'Cătur', 'tudor.catur@example.com', 10, 'M');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - National Development', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Luca', 'Roibu', 'luca.roibu@example.com', 10, 'M');
+
+-- Categoria: Group - Youth
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'CSM ARAD / ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Riana', 'Suteu', 'riana.suteu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Alexandra', 'Zimerman', 'alexandra.zimerman@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Patricia', 'Ica', 'patricia.ica@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Mara', 'Ciurdariu', 'mara.ciurdariu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Giulia', 'Popa', 'giulia.popa@example.com', 13, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'CSG GIMNIS IAȘI / CSM IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Rebeca', 'Dorneanu', 'rebeca.dorneanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Roșu', 'maria.rosu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Martina', 'Tiba', 'adina.fecioru@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Ghenghea', 'maria.ghenghea@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Karina', 'Bălăur', 'karina.balaur@example.com', 13, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI / C.S UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Ilinca', 'Goncear', 'ilinca.goncear@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Mara', 'Vintila', 'mara.vintila@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Iris', 'Apostol', 'iris.apostol@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rebecca', 'Deca', 'rebecca.deca@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Negrescu', 'amalia.negrescu@example.com', 13, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'A.C.S AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alessia', 'Ene', 'alessia.ene@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Andra', 'Nutu', 'andra.nutu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Drăgan', 'antonia.dragan@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Denisa', 'Bălan', 'denisa.balan@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Nicolae', 'amalia.nicolae@example.com', 13, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'CS FARUL CONSTANȚA / CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Luca Ionuț', 'Greu', 'luca.ionut.greu@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Natalis Georgiana', 'Chiosea', 'natalis.georgiana.chiosea@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ana Maria', 'Filimon', 'ana.maria.filimon@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rebeca Cristina', 'Ciurea', 'rebeca.ciurea@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Robert Ștefan', 'Ristea', 'robert.stefan.ristea@example.com', 13, 'M');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alessia', 'Apostol', 'alessia.apostol@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maya', 'Ion', 'maya.ion@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Goncear', 'maria.goncear@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Adelina', 'Caratas', 'adelina.caratas@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Popescu', 'antonia.popescu@example.com', 13, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Kristina', 'Varvariuc', 'kristina.varvariuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Victoria', 'Munteanu', 'victoria.munteanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ecaterina', 'Tuluc', 'ecaterina.tuluc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Evelina', 'Ivasiuc', 'evelina.ivasiuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Kira', 'Ghirjeva', 'kira.ghirjeva@example.com', 13, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'CSG GIMNIS IAȘI / CSM IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Adina', 'Fecioru', 'ioana.pasniciuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Daria', 'Budeanu-Zup', 'daria.budeanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Andra', 'Cobzaru', 'andra.cobzaru@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Iulia', 'Iacob', 'iulia.iacob@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Denisa', 'Ciobotă', 'denisa.ciobota@example.com', 13, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'CSM ARAD / ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Ariana', 'Andra', 'ariana.andra@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rania', 'Popescu', 'rania.popescu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Giulia', 'Kapca', 'giulia.kapca@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Anya', 'Stanica', 'anya.stanica@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Mogaldea', 'amalia.mogaldea@example.com', 13, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Group - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Roxana', 'Răileanu', 'roxana.raileanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Avram', 'sara.avram@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Diana', 'David', 'diana.david@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Iancu', 'amalia.iancu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Vasilescu', 'antonia.vasilescu@example.com', 13, 'F');
+
+-- Categoria: Group - Juniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Group - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Emma', 'Rotaru', 'emma.rotaru@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Andreea', 'Stoica', 'andreea.stoica@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Bianca', 'Voicu', 'bianca.voicu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Buda', 'sara.buda@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Toma', 'maria.toma@example.com', 16, 'F');
+
+-- Categoria: Individual Men - Seniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Individual Men - Seniors', 'LPS CETATE DEVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES (currval('competitors_id_seq'), 'Daniel', 'Anton', 'daniel.anton@example.com', 20, 'M');
+
+-- Categoria: Trio - Youth
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Antonia', 'Kukuneshoska', 'antonia.kukuneshoska@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Vespan', 'amalia.vespan@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Kateryna', 'Kuznietsova', 'kateryna.kuznetsova@example.com', 13, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Alessia', 'Apostol', 'alessia.apostol@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maya', 'Ion', 'maya.ion@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Goncear', 'maria.goncear@example.com', 13, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Rebecca', 'Deca', 'rebecca.deca@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Mara', 'Vintila', 'mara.vintila@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ilinca', 'Goncear', 'ilinca.goncear@example.com', 13, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Ema', 'Holban', 'ema.holban@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Liliane', 'Mihai', 'liliane.mihai@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Daria', 'Ailenei', 'daria.ailenei@example.com', 13, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Kristina', 'Varvariuc', 'kristina.varvariuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Victoria', 'Munteanu', 'victoria.munteanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ecaterina', 'Tuluc', 'ecaterina.tuluc@example.com', 13, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Giulia', 'Kapca', 'giulia.kapca@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Riana', 'Suteu', 'riana.suteu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Alexandra', 'Zimerman', 'alexandra.zimerman@example.com', 13, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Patricia', 'Ica', 'patricia.ica@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Mara', 'Ciudariu', 'mara.ciudariu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Iulia', 'Popa', 'iulia.popa@example.com', 13, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Vlad Theodor', 'Ciurea', 'vlad.ciurea@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Rebecca', 'Misu', 'rebecca.misu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ioana Sophia', 'Dumitru', 'ioana.dumitru@example.com', 13, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Kira', 'Ceban', 'kira.ceban@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Nicoleta', 'Pirtu', 'nicoleta.pirtu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Evelina', 'Ivasiuc', 'evelina.ivasiuc@example.com', 13, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'CS FARUL CONSTANȚA/CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Natalis Georgiana', 'Chiosea', 'natalis.chiosea@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rebeca Cristina', 'Ciurea', 'rebeca.ciurea@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Alexandru-Ștefan', 'Talaba', 'alexandru.talaba@example.com', 13, 'M');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Clara', 'Pădure', 'clara.padure@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Miruna', 'Georgescu', 'miruna.georgescu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Neagu', 'sara.neagu@example.com', 13, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Ariana', 'Andra', 'ariana.andra@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rania', 'Popescu', 'rania.popescu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Anya', 'Stanica', 'anya.stanica@example.com', 13, 'F');
+
+-- 13
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Youth', 'CS FARUL CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES 
+  (currval('competitors_id_seq'), 'Sara', 'Avram', 'sara.avram@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Diana', 'David', 'diana.david@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Iancu', 'amalia.iancu@example.com', 13, 'F');
+
+-- Categoria: Trio - Juniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Juniors', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alessia', 'Coman', 'alessia.coman@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Neacsu', 'maria.neacsu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Daria', 'Kasler', 'daria.kasler@example.com', 16, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Juniors', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Sara', 'Stamate', 'sara.stamate@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Adelina', 'Caratas', 'adelina.caratas@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Ruxandra', 'Oancea', 'ruxandra.oancea@example.com', 16, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Juniors', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Taisia', 'Dembitcaia', 'taisia.dembitcaia@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Evelina', 'Sterghite', 'evelina.sterghite@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Xenia', 'Pislari', 'xenia.pislari@example.com', 16, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Bianca', 'Voicu', 'bianca.voicu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Smaranda', 'Geamanu', 'smaranda.geamanu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Andreea', 'Stoica', 'andreea.stoica@example.com', 16, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Emma', 'Rotaru', 'emma.rotaru@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Draghici', 'ana.draghici@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Toma', 'maria.toma@example.com', 16, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Trio - Juniors', 'C.S UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Ingrid', 'Musat', 'ingrid.musat@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Carina', 'Stan', 'carina.stan@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Mihaela', 'Manda', 'mihaela.manda@example.com', 16, 'F');
+
+-- Categoria: Group - Kids Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Group - Kids Development', 'CSM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Draghicescu', 'eva.draghicescu@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Kapca', 'antonia.kapca@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Alexandra', 'Kapca', 'alexandra.kapca@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Sabau', 'ana.sabau@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Vinga', 'sara.vinga@example.com', 8, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Group - Kids Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Muller', 'eva.muller@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Natalia', 'Bajenaru', 'natalia.bajenaru@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Eliza', 'Popescu', 'eliza.popescu@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Emilia', 'Olteanu', 'emilia.olteanu@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Alexandra', 'Duiculescu', 'alexandra.duiculescu@example.com', 8, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Group - Kids Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Gomeaja', 'eva.gomeaja@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Bucataru', 'amalia.bucataru@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Jantea', 'anastasia.jantea@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Adelina Ana', 'Jantea', 'adelina.jantea@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Popescu', 'adelina.jantea@example.com', 8, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Group - Kids Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maria', 'Riner', 'maria.riner@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Suvari', 'eva.suvari@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Varvara', 'Ivaschiv', 'varvara.ivaschiv@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Arina', 'Sontea', 'arina.sontea@example.com', 8, 'F'),
+  (currval('competitors_id_seq'), 'Miroslava', 'Topal', 'miroslava.topal@example.com', 8, 'F');
+
+
+-- Categoria: Group - National Development
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Gorosov', 'eva.gorosov@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Furtuna', 'eva.furtuna@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Victoria', 'Lipovan', 'victoria.lipovan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Guboreva', 'anastasia.guboreva@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Procova', 'anastasia.procova@example.com', 10, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'ACS GYMTEAM ARAD');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alice', 'Luca', 'alice.luca@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Albu', 'antonia.albu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Emma', 'Chismore', 'emma.chismore@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Iasmina', 'Cicirean', 'iasmina.cicirean@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Andreea', 'Lazarescu', 'andreea.lazarescu@example.com', 10, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'CS FARUL CONSTANȚA/CSS1 CONSTANȚA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Natalia Maria', 'Remus', 'natalia.remus@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Daria Alexandra', 'Stanciulescu', 'daria.stanciulescu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Eva Maria', 'Leuca', 'eva.leuca@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Nadia Maria', 'Zelenseac', 'nadia.zelenseac@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Ali Aylin', 'Memet', 'ali.memet@example.com', 10, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'A.C.S DACIANA ENACHE SCHOOL OF GYMNASTICS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maya', 'Nica', 'maya.nica@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anais', 'Roman', 'anais.roman@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Pirlea', 'ana.pirlea@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Liana', 'Craciunel', 'liana.craciunel@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Carolina', 'Tudosoiu', 'carolina.tudosoiu@example.com', 10, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Medeea', 'Axente', 'medeea.axente@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Sofia', 'Ivașcu', 'sofia.ivasiuc@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Adelle', 'Sorică', 'adelle.sorica@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Adelina', 'Schiopu', 'adelina.schiopu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Iris', 'Crețan', 'iris.cretan@example.com', 10, 'F');
+
+-- 6
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Thea', 'Geanaliu Nicolae', 'thea.geanaliu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Raisa', 'Bologa', 'raisa.bologa@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Laura', 'Stoica', 'laura.stoica@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Iris', 'Ionescu', 'iris.ionescu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Pavel', 'maria.pavel@example.com', 10, 'F');
+
+-- 7
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maya', 'Paparău', 'maya.paparau@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Bianca', 'Căbalău', 'bianca.cabalau@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Carina', 'Fosa', 'carina.fosa@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Nicole', 'Fănaru', 'nicole.fanaru@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Rebecca', 'Buzarbici Filipescu', 'rebeca.buzarbici@example.com', 10, 'F');
+
+-- 8
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Anna', 'Sapogovscaia', 'anna.sapogovscaia@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Sofia', 'Moraras', 'sofia.morarras@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Varvara', 'Formusatii', 'varvara.formusatii@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anna', 'Dememina', 'anna.dememina@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Mancas', 'maria.mancas@example.com', 10, 'F');
+
+-- 9
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'A.C.S AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Ioana', 'Stancu', 'ioana.stancu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Daria', 'Alexandru', 'daria.alexandru@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Diana', 'Ruta', 'diana.ruta@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Maia', 'Enache', 'maia.enache@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Cătălina', 'Petcu', 'catalina.petcu@example.com', 10, 'F');
+
+-- 10
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'CSG GIMNIS IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Daria', 'Topciu', 'daria.topciu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Smaranda', 'Balaur', 'smaranda.balaur@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Pușcașu', 'sara.puscasu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Bugan', 'anastasia.bugan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Medeea', 'Bărbieru', 'medea.barbieru@example.com', 10, 'F');
+
+-- 11
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Denisa', 'Tarlapan', 'denisa.tarlapan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Taisia', 'Vicol', 'taisia.vicol@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Daria', 'Sclifos', 'daria.sclifos@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Evelina', 'Pirtu', 'evelina.pirtu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Anastasia', 'Topal', 'anastasia.topal@example.com', 10, 'F');
+
+-- 12
+INSERT INTO competitors (category, club)
+VALUES ('Group - National Development', 'ACS VIVA SPORT BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Bianca', 'Graure', 'bianca.graure@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Katalina', 'Corbu', 'katalina.corbu@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Stan', 'sara.stan@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Ana', 'Vasile', 'ana.vasile@example.com', 10, 'F'),
+  (currval('competitors_id_seq'), 'Filip', 'Dumitrescu', 'filip.dumitrescu@example.com', 10, 'M');
+
+-- Categoria: Aerobic Dance - Youth
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Youth', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI / C.S UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Rebecca', 'Deca', 'rebecca.deca@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Ispas', 'antonia.ispas@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Radu', 'antonia.radu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Popescu', 'antonia.popescu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Mara', 'Vintila', 'mara.vintila@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Iris', 'Apostol', 'iris.apostol@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maya', 'Ion', 'maya.ion@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Negrescu', 'amalia.negrescu@example.com', 13, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Youth', 'REPUBLICA MOLDOVA');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Kristina', 'Varvariuc', 'kristina.varvariuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Victoria', 'Munteanu', 'victoria.munteanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ecaterina', 'Tuluc', 'ecaterina.tuluc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Evelina', 'Ivasiuc', 'evelina.ivasiuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Kira', 'Ghirjeva', 'kira.ghirjeva@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Vita', 'Cuteincova', 'vita.cuteincova@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Xenia', 'Ursu', 'xenia.ursu@example.com', 13, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Youth', 'ACS THE BUCHAREST HONEY BEARS');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Eva', 'Seropian', 'eva.seropian@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Plugariu', 'maria.plugaru@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Neagu', 'sara.neagu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Radu', 'Perețeanu', 'radu.pereteanu@example.com', 13, 'M'),
+  (currval('competitors_id_seq'), 'Sofia', 'Jurcă', 'sofia.jurca@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Clara', 'Pădure', 'clara.padure@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rebecca', 'Răucescu', 'rebeca.raucescu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Miruna', 'Georgescu', 'miruna.georgescu@example.com', 13, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Youth', 'CSG GIMNIS IAȘI / CSM IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Daria', 'Budeanu-Zup', 'daria.budeanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Adina', 'Fecioru', 'adina.fecioru@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Iulia', 'Iacob', 'iulia.iacob@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Ioana', 'Pasniciuc', 'ioana.pasniciuc@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Rebeca', 'Dorneanu', 'rebeca.dorneanu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Andra', 'Cobzaru', 'andra.cobzaru@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Roșu', 'maria.rosu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Karina', 'Balaur', 'karina.balaur@example.com', 13, 'F');
+
+-- 5
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Youth', 'A.C.S AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Antonia', 'Musat', 'antonia.musat@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Karina', 'Ciomag', 'karina.ciomag@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Andra', 'Nutu', 'andra.nutu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Antonia', 'Drăgan', 'ana.dragan@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Denisa', 'Bălan', 'denisa.balan@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Amalia', 'Nicolae', 'amalia.nicolae@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Bianca', 'Nutu', 'bianca.nutu@example.com', 13, 'F'),
+  (currval('competitors_id_seq'), 'Alessia', 'Ene', 'alessia.ene@example.com', 13, 'F');
+
+-- Categoria: Aerobic Dance - Juniors
+-- --------------------------------------------------
+
+-- 1
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Juniors', 'A.C.S AEROSTAR MĂDĂLINA BARBU BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Ioana', 'Tatu', 'ioana.tatu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Anamaria', 'Moldovan', 'anamaria.moldovan@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Alexandra', 'Stoica', 'alexandra.stoica@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Andra', 'Cuciureanu', 'andra.cuciureanu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Bianca', 'Ilie', 'bianca.ilie@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Diana', 'Bănică', 'diana.banica@example.com', 16, 'F');
+
+-- 2
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Juniors', 'A.C.S ACADEMIA DE GIMNASTICĂ LAURA CRISTACHE BUCUREȘTI / C.S UNEFS BUCUREȘTI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Alessia', 'Apostol', 'alessia.apostol@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Ilinca', 'Goncear', 'ilinca.goncear@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Adelina', 'Caratas', 'adelina.caratas@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Stamate', 'sara.stamate@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Elena', 'Șerbănescu', 'elena.serbanescu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Ruxandra', 'Oancea', 'ruxandra.oancea@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Sofia', 'Grecu', 'sofia.grecu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Carina', 'Stan', 'carina.stan@example.com', 16, 'F');
+
+-- 3
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Juniors', 'CSG GIMNIS IAȘI / CSM IAȘI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Maria', 'Bantă', 'maria.banta@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Adriana', 'Rusu', 'adriana.rusu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Luiza', 'Sbera', 'luiza.sbera@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Medeea', 'Burlacu', 'medeea.burlacu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Martina', 'Tiba', 'martina.tiba@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Denisa', 'Ciobotă', 'denisa.ciobota@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Maria', 'Pal', 'maria.pal@example.com', 16, 'F');
+
+-- 4
+INSERT INTO competitors (category, club)
+VALUES ('Aerobic Dance - Juniors', 'LOT NAȚIONAL JUNIORI');
+INSERT INTO competitor_members (competitor_id, first_name, last_name, email, age, sex)
+VALUES
+  (currval('competitors_id_seq'), 'Andreea', 'Stoica', 'andreea.stoica@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Emma', 'Rotaru', 'emma.rotaru@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Eva', 'Ionescu', 'eva.ionescu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Bianca', 'Voicu', 'bianca.voicu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Smaranda', 'Geamanu', 'smaranda.geamanu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Andra', 'Ionescu', 'andra.ionescu@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Alina', 'Capitan', 'alina.capitan@example.com', 16, 'F'),
+  (currval('competitors_id_seq'), 'Sara', 'Buda', 'sara.buda@example.com', 16, 'F');
