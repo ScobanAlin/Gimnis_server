@@ -484,8 +484,28 @@
           const executionScore = currentCompetitorScores?.execution_score || 0;
           const artistryScore = currentCompetitorScores?.artistry_score || 0;
           const difficultyScore = currentCompetitorScores?.difficulty_score || 0;
-          const principalPenScore = currentCompetitorScores?.principal_penalization || 0;
-          const linePenScore = currentCompetitorScores?.line_penalization || 0;
+          
+          // Fetch penalization scores separately
+          let principalPenScore = 0;
+          let linePenScore = 0;
+          
+          try {
+            const penRes = await fetch(`/api/scores/${state.competitor_id}`);
+            if (penRes.ok) {
+              const penData = await penRes.json();
+              // Find penalization scores in the scores object
+              Object.keys(penData.scores).forEach(key => {
+                if (key.includes('principal_penalization') && penData.scores[key] !== null) {
+                  principalPenScore = Math.abs(penData.scores[key]);
+                }
+                if (key.includes('line_penalization') && penData.scores[key] !== null) {
+                  linePenScore = Math.abs(penData.scores[key]);
+                }
+              });
+            }
+          } catch (err) {
+            console.error("Penalization fetch failed:", err);
+          }
 
           content.innerHTML = `
               <div class="ranking-box">
@@ -518,7 +538,7 @@
                       <div class="score-value">${difficultyScore.toFixed(3)}</div>
                     </div>
                     <div class="score-item principal-pen">
-                      <div class="score-label">Chair<br>Penalization</div>
+                      <div class="score-label">Principal<br>Penalization</div>
                       <div class="score-value">-${principalPenScore.toFixed(3)}</div>
                     </div>
                     <div class="score-item line-pen">
