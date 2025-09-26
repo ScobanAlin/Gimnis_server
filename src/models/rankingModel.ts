@@ -1,11 +1,20 @@
 import db from "../db";
 
 // helper: middle 2 average
-function middleTwoAverage(arr: number[]): number {
-  if (arr.length < 4) return 0;
+function middleTwoAverage(arr: number[], label: string, competitorId: number): number {
+  if (arr.length < 4) {
+    console.log(`[DEBUG] Competitor ${competitorId} ${label}: not enough scores`, arr);
+    return 0;
+  }
   const sorted = [...arr].sort((a, b) => a - b);
-  // Drop min and max, average the middle two
-  const middle = sorted.slice(1, -1);
+  const middle = sorted.slice(1, -1); // drop min & max
+
+  console.log(`[DEBUG] Competitor ${competitorId} ${label}:`);
+  console.log("   Raw:", arr);
+  console.log("   Sorted:", sorted);
+  console.log("   Middle two:", middle);
+  console.log("   Average:", middle.reduce((a, b) => a + b, 0) / middle.length);
+
   return middle.reduce((a, b) => a + b, 0) / middle.length;
 }
 
@@ -80,8 +89,8 @@ export const fetchRankings = async () => {
   const rankingsByCategory: Record<string, any[]> = {};
 
   Object.values(grouped).forEach((comp: any) => {
-    const execution_avg = middleTwoAverage(comp.execution);
-    const artistry_avg = middleTwoAverage(comp.artistry);
+    const execution_avg = middleTwoAverage(comp.execution,"Execution",comp.competitor_id);
+    const artistry_avg = middleTwoAverage(comp.artistry,"Artistry",comp.competitor_id);
     const difficulty_val = comp.difficulty.length > 0 ? comp.difficulty[0] : 0;
     const penalties = comp.penalties.reduce((a: number, b: number) => a + b, 0);
 
