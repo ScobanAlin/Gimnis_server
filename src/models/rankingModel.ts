@@ -1,20 +1,10 @@
 import db from "../db";
 
-// helper: middle 2 average
-function middleTwoAverage(arr: number[], label: string, competitorId: number): number {
-  if (arr.length < 4) {
-    console.log(`[DEBUG] Competitor ${competitorId} ${label}: not enough scores`, arr);
-    return 0;
-  }
+// 🟢 Helper: middle 2 average (drop min & max, average the middle two)
+function middleTwoAverage(arr: number[]): number {
+  if (arr.length < 4) return 0;
   const sorted = [...arr].sort((a, b) => a - b);
-  const middle = sorted.slice(1, -1); // drop min & max
-
-  console.log(`[DEBUG] Competitor ${competitorId} ${label}:`);
-  console.log("   Raw:", arr);
-  console.log("   Sorted:", sorted);
-  console.log("   Middle two:", middle);
-  console.log("   Average:", middle.reduce((a, b) => a + b, 0) / middle.length);
-
+  const middle = sorted.slice(1, -1); // remove lowest and highest
   return middle.reduce((a, b) => a + b, 0) / middle.length;
 }
 
@@ -40,6 +30,7 @@ export const fetchRankings = async () => {
 
   const result = await db.query(query);
 
+  // 🟢 Group competitors
   const grouped: Record<number, any> = {};
 
   for (const row of result.rows) {
@@ -54,43 +45,47 @@ export const fetchRankings = async () => {
         difficulty: [] as number[],
         penalties: [] as number[],
         members: [] as string[],
+        scoreKeys: new Set<string>(), // ✅ prevent duplicates
       };
     }
 
-    // collect members (LastName FirstName format)
-    if (
-      row.member_id &&
-      !grouped[row.competitor_id].members.includes(
-        `${row.last_name} ${row.first_name}`
-      )
-    ) {
-      grouped[row.competitor_id].members.push(
-        `${row.last_name} ${row.first_name}`
-      );
+    const comp = grouped[row.competitor_id];
+
+    // 🟢 Collect members (LastName FirstName)
+    if (row.member_id) {
+      const memberName = `${row.last_name} ${row.first_name}`;
+      if (!comp.members.includes(memberName)) {
+        comp.members.push(memberName);
+      }
     }
 
-    // collect scores
-    if (row.score_type === "execution" && row.value != null)
-      grouped[row.competitor_id].execution.push(Number(row.value));
-    if (row.score_type === "artistry" && row.value != null)
-      grouped[row.competitor_id].artistry.push(Number(row.value));
-    if (row.score_type === "difficulty" && row.value != null)
-      grouped[row.competitor_id].difficulty.push(Number(row.value));
-    if (
-      ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
-        row.score_type
-      ) &&
-      row.value != null
-    )
-      grouped[row.competitor_id].penalties.push(Number(row.value));
+    // 🟢 Collect scores (avoid duplicates caused by join with members)
+    if (row.score_type && row.value != null) {
+      const key = `${row.judge_id}-${row.score_type}`;
+      if (!comp.scoreKeys.has(key)) {
+        comp.scoreKeys.add(key);
+        const val = Number(row.value);
+
+        if (row.score_type === "execution") comp.execution.push(val);
+        if (row.score_type === "artistry") comp.artistry.push(val);
+        if (row.score_type === "difficulty") comp.difficulty.push(val);
+        if (
+          ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
+            row.score_type
+          )
+        ) {
+          comp.penalties.push(val);
+        }
+      }
+    }
   }
 
-  // calculate averages + rankings
+  // 🟢 Calculate averages + rankings
   const rankingsByCategory: Record<string, any[]> = {};
 
   Object.values(grouped).forEach((comp: any) => {
-    const execution_avg = middleTwoAverage(comp.execution,"Execution",comp.competitor_id);
-    const artistry_avg = middleTwoAverage(comp.artistry,"Artistry",comp.competitor_id);
+    const execution_avg = middleTwoAverage(comp.execution);
+    const artistry_avg = middleTwoAverage(comp.artistry);
     const difficulty_val = comp.difficulty.length > 0 ? comp.difficulty[0] : 0;
     const penalties = comp.penalties.reduce((a: number, b: number) => a + b, 0);
 
@@ -102,8 +97,8 @@ export const fetchRankings = async () => {
     }
 
     rankingsByCategory[comp.category].push({
-      competitor_id: comp.competitor_id,       // ✅ added
-      competitor: comp.members.join(" / "),    // show names
+      competitor_id: comp.competitor_id,
+      competitor: comp.members.join(" / "), // show all names
       club: comp.club,
       total_score: Number(comp.total_score),
       calc_total: calcTotal,
@@ -113,7 +108,7 @@ export const fetchRankings = async () => {
     });
   });
 
-  // assign ranks with tie-handling
+  // 🟢 Assign ranks with tie-handling
   Object.keys(rankingsByCategory).forEach((cat) => {
     const list = rankingsByCategory[cat];
 
