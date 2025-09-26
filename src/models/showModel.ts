@@ -49,7 +49,7 @@ export const setShowCompetitor = async (competitorId: number) => {
 
 export const getActiveShow = async () => {
   // delete if expired (older than 20)
-  await db.query(`DELETE FROM show_competitor WHERE started_at < NOW() - INTERVAL '20 seconds'`);
+  await db.query(`DELETE FROM show_competitor WHERE started_at < NOW() - INTERVAL '60 seconds'`);
   const res = await db.query(`SELECT * FROM show_competitor LIMIT 1`);
   return res.rows[0] || null;
 };

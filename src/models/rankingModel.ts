@@ -4,7 +4,9 @@ import db from "../db";
 function middleTwoAverage(arr: number[]): number {
   if (arr.length < 4) return 0;
   const sorted = [...arr].sort((a, b) => a - b);
-  return (sorted[1] + sorted[2]) / 2;
+  // Drop min and max, average the middle two
+  const middle = sorted.slice(1, -1);
+  return middle.reduce((a, b) => a + b, 0) / middle.length;
 }
 
 export const fetchRankings = async () => {
