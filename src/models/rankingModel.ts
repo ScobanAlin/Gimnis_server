@@ -21,11 +21,6 @@ function applyTolerance(arr: number[], label: string, competitorId: number): num
   if (diff > allowed) {
     // 🟢 NEW: Tolerance exceeded → use average of all scores
     const allAvg = arr.reduce((a, b) => a + b, 0) / arr.length;
-    console.log(
-      `[DEBUG] Competitor ${competitorId} ${label}: tolerance exceeded (diff=${diff.toFixed(
-        2
-      )} > ${allowed}), using all-scores average=${allAvg.toFixed(3)}`
-    );
     return allAvg;
   }
 
