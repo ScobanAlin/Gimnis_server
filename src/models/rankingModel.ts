@@ -1,11 +1,36 @@
 import db from "../db";
 
-// 🟢 Helper: middle 2 average (drop min & max, average the middle two)
-function middleTwoAverage(arr: number[]): number {
+// 🟢 NEW: Helper to get allowed tolerance based on avg score
+function getAllowedTolerance(avg: number): number {
+  if (avg >= 8.0) return 0.3;
+  if (avg >= 7.0) return 0.4;
+  if (avg >= 6.0) return 0.5;
+  return 0.6;
+}
+
+// 🟢 NEW: Apply FIG tolerance rules
+function applyTolerance(arr: number[], label: string, competitorId: number): number {
   if (arr.length < 4) return 0;
+
   const sorted = [...arr].sort((a, b) => a - b);
-  const middle = sorted.slice(1, -1); // remove lowest and highest
-  return middle.reduce((a, b) => a + b, 0) / middle.length;
+  const middleTwo = [sorted[1], sorted[2]]; // 2nd and 3rd after sort
+  const avgMiddle = (middleTwo[0] + middleTwo[1]) / 2;
+  const diff = Math.abs(middleTwo[0] - middleTwo[1]);
+  const allowed = getAllowedTolerance(avgMiddle);
+
+  if (diff > allowed) {
+    // 🟢 NEW: Tolerance exceeded → use average of all scores
+    const allAvg = arr.reduce((a, b) => a + b, 0) / arr.length;
+    console.log(
+      `[DEBUG] Competitor ${competitorId} ${label}: tolerance exceeded (diff=${diff.toFixed(
+        2
+      )} > ${allowed}), using all-scores average=${allAvg.toFixed(3)}`
+    );
+    return allAvg;
+  }
+
+  // 🟢 NEW: Within tolerance → average of middle two
+  return avgMiddle;
 }
 
 export const fetchRankings = async () => {
@@ -51,7 +76,7 @@ export const fetchRankings = async () => {
 
     const comp = grouped[row.competitor_id];
 
-    // 🟢 Collect members (LastName FirstName)
+    // Collect members (LastName FirstName)
     if (row.member_id) {
       const memberName = `${row.last_name} ${row.first_name}`;
       if (!comp.members.includes(memberName)) {
@@ -59,7 +84,7 @@ export const fetchRankings = async () => {
       }
     }
 
-    // 🟢 Collect scores (avoid duplicates caused by join with members)
+    // Collect scores (avoid duplicates caused by join with members)
     if (row.score_type && row.value != null) {
       const key = `${row.judge_id}-${row.score_type}`;
       if (!comp.scoreKeys.has(key)) {
@@ -84,8 +109,10 @@ export const fetchRankings = async () => {
   const rankingsByCategory: Record<string, any[]> = {};
 
   Object.values(grouped).forEach((comp: any) => {
-    const execution_avg = middleTwoAverage(comp.execution);
-    const artistry_avg = middleTwoAverage(comp.artistry);
+    // 🟢 CHANGED: use tolerance logic instead of plain middleTwoAverage
+    const execution_avg = applyTolerance(comp.execution, "Execution", comp.competitor_id);
+    const artistry_avg = applyTolerance(comp.artistry, "Artistry", comp.competitor_id);
+
     const difficulty_val = comp.difficulty.length > 0 ? comp.difficulty[0] : 0;
     const penalties = comp.penalties.reduce((a: number, b: number) => a + b, 0);
 
