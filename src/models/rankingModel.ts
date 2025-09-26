@@ -6,7 +6,7 @@ function middleTwoAverage(arr: number[]): number {
   const sorted = [...arr].sort((a, b) => a - b);
   // Drop min and max, average the middle two
   const middle = sorted.slice(1, -1);
-  return middle.reduce((a, b) => a + b, 0) / 2;
+  return middle.reduce((a, b) => a + b, 0) / middle.length;
 }
 
 export const fetchRankings = async () => {
