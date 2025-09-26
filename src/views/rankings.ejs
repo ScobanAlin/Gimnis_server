@@ -643,11 +643,14 @@
                     
                     // Extract penalizations from scores
                     for (const [key, value] of Object.entries(scores)) {
-                      if (key.includes('line_penalization') && typeof value === 'number') {
-                        penalizations.line_penalization += value;
+                      const num = Number(value); // ✅ force numeric
+                      if (isNaN(num)) continue;  // skip non-numeric values
+
+                      if (key.includes('line_penalization')) {
+                        penalizations.line_penalization += num;
                       }
-                      if (key.includes('principal_penalization') && typeof value === 'number') {
-                        penalizations.principal_penalization += value;
+                      if (key.includes('principal_penalization')) {
+                        penalizations.principal_penalization += num;
                       }
                     }
                   }
