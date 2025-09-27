@@ -712,7 +712,7 @@
       <td>${(item.difficulty_score/2.0).toFixed(3)}</td>
       <td>${item.line_penalization ? '-' + Math.abs(item.line_penalization).toFixed(3) : '0.000'}</td>
       <td>${item.principal_penalization ? '-' + Math.abs(item.principal_penalization).toFixed(3) : '0.000'}</td>
-      <td>${item.difficulty_penalization ? '-' + Math.abs(item.difficulty_penalization).toFixed(3) : '0.000'}</td>
+      <td>${item.difficulty_penalization ? '-' + Math.abs(item.difficulty_penalization/2.0).toFixed(3) : '0.000'}</td>
       <td>${item.total_score.toFixed(3)}</td>
     </tr>`;
               });
