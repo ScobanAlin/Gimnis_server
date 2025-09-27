@@ -331,9 +331,7 @@
     /* Score columns styling */
     td:nth-child(4),
     td:nth-child(5),
-    td:nth-child(6),
-    td:nth-child(7),
-    td:nth-child(8) {
+    td:nth-child(6) {
       font-weight: 700;
       color: #FFD700;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -341,10 +339,13 @@
     }
 
     /* Penalization columns styling */
-    .penalization {
+    td:nth-child(7),
+    td:nth-child(8),
+    td:nth-child(9) {
       color: #FF6B6B !important;
       font-weight: 800;
       text-shadow: 1px 1px 3px rgba(255, 107, 107, 0.5);
+      font-size: 16px;
     }
 
     td:last-child {
@@ -398,8 +399,8 @@
 
       th,
       td {
-        padding: 15px 10px;
-        font-size: 14px;
+        padding: 15px 8px;
+        font-size: 13px;
       }
     }
 
@@ -439,13 +440,13 @@
       }
 
       table {
-        min-width: 800px;
+        min-width: 900px;
       }
 
       th,
       td {
-        padding: 12px 8px;
-        font-size: 13px;
+        padding: 12px 6px;
+        font-size: 12px;
         white-space: nowrap;
       }
     }
@@ -635,7 +636,11 @@
               const enhancedList = await Promise.all(list.map(async (item) => {
                 try {
                   const scoresRes = await fetch(`/api/scores/${item.competitor_id}`);
-                  let penalizations = { line_penalization: 0, principal_penalization: 0 };
+                  let penalizations = { 
+                    line_penalization: 0, 
+                    principal_penalization: 0, 
+                    difficulty_penalization: 0 
+                  };
                   
                   if (scoresRes.ok) {
                     const scoresData = await scoresRes.json();
@@ -652,13 +657,21 @@
                       if (key.includes('principal_penalization')) {
                         penalizations.principal_penalization += num;
                       }
+                      if (key.includes('difficulty_penalization')) {
+                        penalizations.difficulty_penalization += num;
+                      }
                     }
                   }
                   
                   return { ...item, ...penalizations };
                 } catch (err) {
                   console.warn(`Failed to fetch penalizations for competitor ${item.competitor_id}:`, err);
-                  return { ...item, line_penalization: 0, principal_penalization: 0 };
+                  return { 
+                    ...item, 
+                    line_penalization: 0, 
+                    principal_penalization: 0, 
+                    difficulty_penalization: 0 
+                  };
                 }
               }));
 
@@ -677,6 +690,7 @@
                         <th>Difficulty</th>
                         <th>Line Penalty</th>
                         <th>Chair Penalty</th>
+                        <th>Diff Penalty</th>
                         <th>Total</th>
                       </tr>
                     </thead>
@@ -695,9 +709,10 @@
       <td>${item.club}</td>
       <td>${item.execution_score.toFixed(3)}</td>
       <td>${item.artistry_score.toFixed(3)}</td>
-      <td>${item.difficulty_score.toFixed(3)}</td>
-      <td class="penalization">${item.line_penalization ? '-' + item.line_penalization.toFixed(3) : '0.000'}</td>
-      <td class="penalization">${item.principal_penalization ? '-' + item.principal_penalization.toFixed(3) : '0.000'}</td>
+      <td>${item.difficulty_score.toFixed(3)/2.0}</td>
+      <td>${item.line_penalization ? '-' + Math.abs(item.line_penalization).toFixed(3) : '0.000'}</td>
+      <td>${item.principal_penalization ? '-' + Math.abs(item.principal_penalization).toFixed(3) : '0.000'}</td>
+      <td>${item.difficulty_penalization ? '-' + Math.abs(item.difficulty_penalization).toFixed(3) : '0.000'}</td>
       <td>${item.total_score.toFixed(3)}</td>
     </tr>`;
               });
