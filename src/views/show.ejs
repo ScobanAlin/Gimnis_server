@@ -285,10 +285,10 @@
 
     .score-item {
       flex: 1;
-      min-width: 110px;
+      min-width: 95px;
       background: rgba(0, 0, 0, 0.8);
-      border-radius: 20px;
-      padding: 20px 15px;
+      border-radius: 18px;
+      padding: 18px 12px;
       text-align: center;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
       border: 3px solid transparent;
@@ -296,10 +296,10 @@
     }
 
     .score-label {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       color: #ffffff;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -307,7 +307,7 @@
     }
 
     .score-value {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 900;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), 0 2px 4px rgba(0, 0, 0, 0.9);
     }
@@ -360,6 +360,16 @@
     .score-item.line-pen .score-value {
       color: #ddaaff;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 1), 0 0 20px rgba(204, 153, 255, 0.6);
+    }
+
+    .score-item.difficulty-pen {
+      border-color: #ffaa33;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(51, 40, 15, 0.8));
+    }
+
+    .score-item.difficulty-pen .score-value {
+      color: #ffbb55;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 1), 0 0 20px rgba(255, 170, 51, 0.6);
     }
 
     .total-score {
@@ -488,6 +498,7 @@
           // Fetch penalization scores separately
           let principalPenScore = 0;
           let linePenScore = 0;
+          let difficultyPenScore = 0;
           
           try {
             const penRes = await fetch(`/api/scores/${state.competitor_id}`);
@@ -500,6 +511,9 @@
                 }
                 if (key.includes('line_penalization') && penData.scores[key] !== null) {
                   linePenScore = Math.abs(penData.scores[key]);
+                }
+                if (key.includes('difficulty_penalization') && penData.scores[key] !== null) {
+                  difficultyPenScore = Math.abs(penData.scores[key]);
                 }
               });
             }
@@ -544,6 +558,10 @@
                     <div class="score-item line-pen">
                       <div class="score-label">Line<br>Penalization</div>
                       <div class="score-value">-${linePenScore.toFixed(3)}</div>
+                    </div>
+                    <div class="score-item difficulty-pen">
+                      <div class="score-label">Difficulty<br>Penalization</div>
+                      <div class="score-value">-${difficultyPenScore.toFixed(3)}</div>
                     </div>
                   </div>
                   <div class="total-score">⭐ Total Score: ${Number(state.total_score).toFixed(3)}</div>
