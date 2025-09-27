@@ -750,8 +750,8 @@
         // Initial load
         loadRankings();
 
-        // Refresh every 5s
-        setInterval(loadRankings, 5000);
+        // Refresh every 60s
+        setInterval(loadRankings, 60000);
 
         // Reload data on category change
         document.getElementById("category-select").addEventListener("change", loadRankings);
