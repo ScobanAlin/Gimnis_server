@@ -1,10 +1,31 @@
 import db from "../db";
 
-// helper: middle 2 average
-function middleTwoAverage(arr: number[]): number {
+// 🟢 NEW: Helper to get allowed tolerance based on avg score
+function getAllowedTolerance(avg: number): number {
+  if (avg >= 8.0) return 0.3;
+  if (avg >= 7.0) return 0.4;
+  if (avg >= 6.0) return 0.5;
+  return 0.6;
+}
+
+// 🟢 NEW: Apply FIG tolerance rules
+function applyTolerance(arr: number[], label: string, competitorId: number): number {
   if (arr.length < 4) return 0;
+
   const sorted = [...arr].sort((a, b) => a - b);
-  return (sorted[1] + sorted[2]) / 2;
+  const middleTwo = [sorted[1], sorted[2]]; // 2nd and 3rd after sort
+  const avgMiddle = (middleTwo[0] + middleTwo[1]) / 2;
+  const diff = Math.abs(middleTwo[0] - middleTwo[1]);
+  const allowed = getAllowedTolerance(avgMiddle);
+
+  if (diff > allowed) {
+    // 🟢 NEW: Tolerance exceeded → use average of all scores
+    const allAvg = arr.reduce((a, b) => a + b, 0) / arr.length;
+    return allAvg;
+  }
+
+  // 🟢 NEW: Within tolerance → average of middle two
+  return avgMiddle;
 }
 
 export const fetchRankings = async () => {
@@ -29,6 +50,7 @@ export const fetchRankings = async () => {
 
   const result = await db.query(query);
 
+  // 🟢 Group competitors
   const grouped: Record<number, any> = {};
 
   for (const row of result.rows) {
@@ -43,43 +65,49 @@ export const fetchRankings = async () => {
         difficulty: [] as number[],
         penalties: [] as number[],
         members: [] as string[],
+        scoreKeys: new Set<string>(), // ✅ prevent duplicates
       };
     }
 
-    // collect members (LastName FirstName format)
-    if (
-      row.member_id &&
-      !grouped[row.competitor_id].members.includes(
-        `${row.last_name} ${row.first_name}`
-      )
-    ) {
-      grouped[row.competitor_id].members.push(
-        `${row.last_name} ${row.first_name}`
-      );
+    const comp = grouped[row.competitor_id];
+
+    // Collect members (LastName FirstName)
+    if (row.member_id) {
+      const memberName = `${row.last_name} ${row.first_name}`;
+      if (!comp.members.includes(memberName)) {
+        comp.members.push(memberName);
+      }
     }
 
-    // collect scores
-    if (row.score_type === "execution" && row.value != null)
-      grouped[row.competitor_id].execution.push(Number(row.value));
-    if (row.score_type === "artistry" && row.value != null)
-      grouped[row.competitor_id].artistry.push(Number(row.value));
-    if (row.score_type === "difficulty" && row.value != null)
-      grouped[row.competitor_id].difficulty.push(Number(row.value));
-    if (
-      ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
-        row.score_type
-      ) &&
-      row.value != null
-    )
-      grouped[row.competitor_id].penalties.push(Number(row.value));
+    // Collect scores (avoid duplicates caused by join with members)
+    if (row.score_type && row.value != null) {
+      const key = `${row.judge_id}-${row.score_type}`;
+      if (!comp.scoreKeys.has(key)) {
+        comp.scoreKeys.add(key);
+        const val = Number(row.value);
+
+        if (row.score_type === "execution") comp.execution.push(val);
+        if (row.score_type === "artistry") comp.artistry.push(val);
+        if (row.score_type === "difficulty") comp.difficulty.push(val);
+        if (
+          ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
+            row.score_type
+          )
+        ) {
+          comp.penalties.push(val);
+        }
+      }
+    }
   }
 
-  // calculate averages + rankings
+  // 🟢 Calculate averages + rankings
   const rankingsByCategory: Record<string, any[]> = {};
 
   Object.values(grouped).forEach((comp: any) => {
-    const execution_avg = middleTwoAverage(comp.execution);
-    const artistry_avg = middleTwoAverage(comp.artistry);
+    // 🟢 CHANGED: use tolerance logic instead of plain middleTwoAverage
+    const execution_avg = applyTolerance(comp.execution, "Execution", comp.competitor_id);
+    const artistry_avg = applyTolerance(comp.artistry, "Artistry", comp.competitor_id);
+
     const difficulty_val = comp.difficulty.length > 0 ? comp.difficulty[0] : 0;
     const penalties = comp.penalties.reduce((a: number, b: number) => a + b, 0);
 
@@ -91,8 +119,8 @@ export const fetchRankings = async () => {
     }
 
     rankingsByCategory[comp.category].push({
-      competitor_id: comp.competitor_id,       // ✅ added
-      competitor: comp.members.join(" / "),    // show names
+      competitor_id: comp.competitor_id,
+      competitor: comp.members.join(" / "), // show all names
       club: comp.club,
       total_score: Number(comp.total_score),
       calc_total: calcTotal,
@@ -102,7 +130,7 @@ export const fetchRankings = async () => {
     });
   });
 
-  // assign ranks with tie-handling
+  // 🟢 Assign ranks with tie-handling
   Object.keys(rankingsByCategory).forEach((cat) => {
     const list = rankingsByCategory[cat];
 

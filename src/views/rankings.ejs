@@ -328,17 +328,23 @@
       text-shadow: 0 0 15px #CD7F32;
     }
 
-  
-
     /* Score columns styling */
     td:nth-child(4),
     td:nth-child(5),
     td:nth-child(6),
-    td:nth-child(7) {
+    td:nth-child(7),
+    td:nth-child(8) {
       font-weight: 700;
       color: #FFD700;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
       font-size: 17px;
+    }
+
+    /* Penalization columns styling */
+    .penalization {
+      color: #FF6B6B !important;
+      font-weight: 800;
+      text-shadow: 1px 1px 3px rgba(255, 107, 107, 0.5);
     }
 
     td:last-child {
@@ -433,7 +439,7 @@
       }
 
       table {
-        min-width: 600px;
+        min-width: 800px;
       }
 
       th,
@@ -621,8 +627,40 @@
 
             container.innerHTML = "";
 
-            Object.entries(rankings).forEach(([category, list]) => {
-              if (selected !== "all" && selected !== category) return;
+            // Process each category
+            for (const [category, list] of Object.entries(rankings)) {
+              if (selected !== "all" && selected !== category) continue;
+
+              // Fetch penalization data for each competitor in this category
+              const enhancedList = await Promise.all(list.map(async (item) => {
+                try {
+                  const scoresRes = await fetch(`/api/scores/${item.competitor_id}`);
+                  let penalizations = { line_penalization: 0, principal_penalization: 0 };
+                  
+                  if (scoresRes.ok) {
+                    const scoresData = await scoresRes.json();
+                    const scores = scoresData.scores || {};
+                    
+                    // Extract penalizations from scores
+                    for (const [key, value] of Object.entries(scores)) {
+                      const num = Number(value); // ✅ force numeric
+                      if (isNaN(num)) continue;  // skip non-numeric values
+
+                      if (key.includes('line_penalization')) {
+                        penalizations.line_penalization += num;
+                      }
+                      if (key.includes('principal_penalization')) {
+                        penalizations.principal_penalization += num;
+                      }
+                    }
+                  }
+                  
+                  return { ...item, ...penalizations };
+                } catch (err) {
+                  console.warn(`Failed to fetch penalizations for competitor ${item.competitor_id}:`, err);
+                  return { ...item, line_penalization: 0, principal_penalization: 0 };
+                }
+              }));
 
               let html = `
               <div class="category-block fade-in" data-category="${category}">
@@ -637,12 +675,14 @@
                         <th>Execution</th>
                         <th>Artistry</th>
                         <th>Difficulty</th>
+                        <th>Line Penalty</th>
+                        <th>Chair Penalty</th>
                         <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>`;
 
-              list.forEach(item => {
+              enhancedList.forEach(item => {
                 let medal = "";
                 if (item.position === 1) medal = "🥇";
                 else if (item.position === 2) medal = "🥈";
@@ -656,10 +696,11 @@
       <td>${item.execution_score.toFixed(3)}</td>
       <td>${item.artistry_score.toFixed(3)}</td>
       <td>${item.difficulty_score.toFixed(3)}</td>
+      <td class="penalization">${item.line_penalization ? '-' + item.line_penalization.toFixed(3) : '0.000'}</td>
+      <td class="penalization">${item.principal_penalization ? '-' + item.principal_penalization.toFixed(3) : '0.000'}</td>
       <td>${item.total_score.toFixed(3)}</td>
     </tr>`;
               });
-
 
               html += `
                     </tbody>
@@ -667,7 +708,7 @@
                 </div>
               </div>`;
               container.innerHTML += html;
-            });
+            }
 
             // Show message if no data
             if (container.innerHTML === "") {
