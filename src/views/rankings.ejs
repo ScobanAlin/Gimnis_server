@@ -709,7 +709,7 @@
       <td>${item.club}</td>
       <td>${item.execution_score.toFixed(3)}</td>
       <td>${item.artistry_score.toFixed(3)}</td>
-      <td>${item.difficulty_score.toFixed(3)/2.0}</td>
+      <td>${(item.difficulty_score/2.0).toFixed(3)}</td>
       <td>${item.line_penalization ? '-' + Math.abs(item.line_penalization).toFixed(3) : '0.000'}</td>
       <td>${item.principal_penalization ? '-' + Math.abs(item.principal_penalization).toFixed(3) : '0.000'}</td>
       <td>${item.difficulty_penalization ? '-' + Math.abs(item.difficulty_penalization).toFixed(3) : '0.000'}</td>
