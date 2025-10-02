@@ -329,16 +329,25 @@
     }
 
     /* Score columns styling */
-    td:nth-child(4),
-    td:nth-child(5),
-    td:nth-child(6),
-    td:nth-child(7),
-    td:nth-child(8) {
-      font-weight: 700;
-      color: #FFD700;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-      font-size: 17px;
-    }
+td:nth-child(4),
+td:nth-child(5),
+td:nth-child(6) {
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: 17px;
+}
+
+/* Penalization columns styling */
+td:nth-child(7),
+td:nth-child(8),
+td:nth-child(9) {
+  color: #FF6B6B !important;
+  font-weight: 800;
+  text-shadow: 1px 1px 3px rgba(255, 107, 107, 0.5);
+  font-size: 16px;
+}
+
 
     /* Penalization columns styling */
     .penalization {
@@ -786,16 +795,16 @@
           });
         });
 
-        // Deduplicate & preserve order
-        const dedup = (arr) => [...new Set(arr)];
+        const dedup = arr => [...new Set(arr)];
 
+        // Column order with totals after each block
         const orderedColumns = [
           ...dedup(executionKeys), "Execution Total",
           ...dedup(artistryKeys), "Artistry Total",
-          ...dedup(difficultyKeys), "Difficulty Total (/2)",
-          ...dedup(diffPenKeys),
-          ...dedup(linePenKeys),
-          ...dedup(chairPenKeys),
+          ...dedup(difficultyKeys), "Difficulty Total",
+          ...dedup(diffPenKeys), "Difficulty Penalization Total",
+          ...dedup(linePenKeys), "Line Penalty Total",
+          ...dedup(chairPenKeys), "Chair Penalty Total",
           "Total Score"
         ];
 
@@ -816,8 +825,23 @@
               row.push(c.execution_score.toFixed(3));
             } else if (col === "Artistry Total") {
               row.push(c.artistry_score.toFixed(3));
-            } else if (col === "Difficulty Total (/2)") {
+            } else if (col === "Difficulty Total") {
               row.push((c.difficulty_score / 2.0).toFixed(3));
+            } else if (col === "Difficulty Penalization Total") {
+              const total = Object.keys(c.scores)
+                .filter(k => k.includes("(difficulty_penalization)"))
+                .reduce((sum, k) => sum + (Number(c.scores[k]) || 0), 0);
+              row.push(total ? "-" + (Math.abs(total)/2.0).toFixed(3) : "0.000");
+            } else if (col === "Line Penalty Total") {
+              const total = Object.keys(c.scores)
+                .filter(k => k.includes("(line_penalization)"))
+                .reduce((sum, k) => sum + (Number(c.scores[k]) || 0), 0);
+              row.push(total ? "-" + Math.abs(total).toFixed(3) : "0.000");
+            } else if (col === "Chair Penalty Total") {
+              const total = Object.keys(c.scores)
+                .filter(k => k.includes("(principal_penalization)"))
+                .reduce((sum, k) => sum + (Number(c.scores[k]) || 0), 0);
+              row.push(total ? "-" + Math.abs(total).toFixed(3) : "0.000");
             } else if (col === "Total Score") {
               row.push(c.total_score.toFixed(3));
             } else {
@@ -839,7 +863,6 @@
       alert("Export failed. Check console.");
     }
   });
-
 
         // Initial load
         loadRankings();
