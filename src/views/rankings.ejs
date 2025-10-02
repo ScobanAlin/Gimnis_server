@@ -745,92 +745,90 @@
           }
         }
 
-  document.getElementById("export-excel-btn").addEventListener("click", async () => {
-      try {
-        // Rankings
-        const res = await fetch("/api/rankings");
-        const rankings = await res.json();
+ document.getElementById("export-excel-btn").addEventListener("click", async () => {
+    try {
+      const res = await fetch("/api/rankings");
+      const rankings = await res.json();
 
-        // Judges
-        const judgesRes = await fetch("/api/judges");
-        const judges = await judgesRes.json();
+      const judgesRes = await fetch("/api/judges");
+      const judges = await judgesRes.json();
 
-        // Split into groups by role
-        const execJudges = judges.filter(j => j.role === "execution")
-          .map(j => `${j.first_name} ${j.last_name}`);
-        const artJudges = judges.filter(j => j.role === "artistry")
-          .map(j => `${j.first_name} ${j.last_name}`);
-        const diffJudges = judges.filter(j => j.role === "difficulty")
-          .map(j => `${j.first_name} ${j.last_name}`);
+      // Split judges by role
+      const execJudges = judges.filter(j => j.role === "execution")
+        .map(j => `${j.first_name} ${j.last_name}`);
+      const artJudges = judges.filter(j => j.role === "artistry")
+        .map(j => `${j.first_name} ${j.last_name}`);
+      const diffJudges = judges.filter(j => j.role === "difficulty")
+        .map(j => `${j.first_name} ${j.last_name}`);
 
-        const wb = XLSX.utils.book_new();
+      const wb = XLSX.utils.book_new();
 
-        for (const [category, list] of Object.entries(rankings)) {
-          const rows = [];
+      for (const [category, list] of Object.entries(rankings)) {
+        const rows = [];
 
-          // Header with judge names
-          rows.push([
-            "Position", "Competitor", "Club",
-            ...execJudges.map(n => `Exec (${n})`), "Exec Total",
-            ...artJudges.map(n => `Art (${n})`), "Art Total",
-            ...diffJudges.map(n => `Diff (${n})`), "Diff Total",
-            "Line Pen", "Chair Pen", "Diff Pen",
-            "Total Score"
-          ]);
+        // Header row with judge names
+        rows.push([
+          "Position", "Competitor", "Club",
+          ...execJudges.map(n => `Exec (${n})`), "Exec Total",
+          ...artJudges.map(n => `Art (${n})`), "Art Total",
+          ...diffJudges.map(n => `Diff (${n})`), "Diff Total",
+          "Line Pen", "Chair Pen", "Diff Pen",
+          "Total Score"
+        ]);
 
-          for (let idx = 0; idx < list.length; idx++) {
-            const c = list[idx];
+        for (let idx = 0; idx < list.length; idx++) {
+          const c = list[idx];
 
-            let execScores = [], artScores = [], diffScores = [];
-            let linePen = 0, chairPen = 0, diffPen = 0;
+          let execScores = [], artScores = [], diffScores = [];
+          let linePen = 0, chairPen = 0, diffPen = 0;
 
-            try {
-              const scoresRes = await fetch(`/api/scores/${c.competitor_id}`);
-              if (scoresRes.ok) {
-                const scoresData = await scoresRes.json();
-                const scores = scoresData.scores || {};
+          try {
+            const scoresRes = await fetch(`/api/scores/${c.competitor_id}`);
+            if (scoresRes.ok) {
+              const scoresData = await scoresRes.json();
+              const scores = scoresData.scores || {};
 
-                // Collect in the same order as judge arrays
-                execScores = execJudges.map((_, i) => Number(scores[`exec${i + 1}`]) || 0);
-                artScores = artJudges.map((_, i) => Number(scores[`art${i + 1}`]) || 0);
-                diffScores = diffJudges.map((_, i) => Number(scores[`diff${i + 1}`]) || 0);
+              // Map values in judge order
+              execScores = execJudges.map((_, i) => Number(scores[`execution_${i + 1}`]) || 0);
+              artScores = artJudges.map((_, i) => Number(scores[`artistry_${i + 1}`]) || 0);
+              diffScores = diffJudges.map((_, i) => Number(scores[`difficulty_${i + 1}`]) || 0);
 
-                linePen = Number(scores.line_penalization) || 0;
-                chairPen = Number(scores.principal_penalization) || 0;
-                diffPen = Number(scores.difficulty_penalization) || 0;
-              }
-            } catch (err) {
-              console.warn("Score fetch failed", err);
+              linePen = Number(scores.line_penalization) || 0;
+              chairPen = Number(scores.principal_penalization) || 0;
+              diffPen = Number(scores.difficulty_penalization) || 0;
             }
-
-            const execTot = execScores.reduce((a, b) => a + b, 0);
-            const artTot = artScores.reduce((a, b) => a + b, 0);
-            const diffTot = diffScores.reduce((a, b) => a + b, 0);
-
-            rows.push([
-              c.position || idx + 1,
-              c.competitor,
-              c.club,
-              ...execScores.map(s => s.toFixed(3)), execTot.toFixed(3),
-              ...artScores.map(s => s.toFixed(3)), artTot.toFixed(3),
-              ...diffScores.map(s => s.toFixed(3)), diffTot.toFixed(3),
-              linePen ? "-" + linePen.toFixed(3) : "0.000",
-              chairPen ? "-" + chairPen.toFixed(3) : "0.000",
-              diffPen ? "-" + diffPen.toFixed(3) : "0.000",
-              c.total_score.toFixed(3)
-            ]);
+          } catch (err) {
+            console.warn("Failed fetching scores:", err);
           }
 
-          const ws = XLSX.utils.aoa_to_sheet(rows);
-          XLSX.utils.book_append_sheet(wb, ws, category.substring(0, 31));
+          const execTot = execScores.reduce((a, b) => a + b, 0);
+          const artTot = artScores.reduce((a, b) => a + b, 0);
+          const diffTot = diffScores.reduce((a, b) => a + b, 0);
+
+          rows.push([
+            c.position || idx + 1,
+            c.competitor,
+            c.club,
+            ...execScores.map(s => s.toFixed(3)), execTot.toFixed(3),
+            ...artScores.map(s => s.toFixed(3)), artTot.toFixed(3),
+            ...diffScores.map(s => s.toFixed(3)), diffTot.toFixed(3),
+            linePen ? "-" + linePen.toFixed(3) : "0.000",
+            chairPen ? "-" + chairPen.toFixed(3) : "0.000",
+            diffPen ? "-" + diffPen.toFixed(3) : "0.000",
+            c.total_score.toFixed(3)
+          ]);
         }
 
-        XLSX.writeFile(wb, "competition_rankings.xlsx");
-      } catch (err) {
-        console.error("Excel export failed:", err);
-        alert("Export failed. Check console.");
+        const ws = XLSX.utils.aoa_to_sheet(rows);
+        XLSX.utils.book_append_sheet(wb, ws, category.substring(0, 31));
       }
-    });
+
+      XLSX.writeFile(wb, "competition_rankings.xlsx");
+    } catch (err) {
+      console.error("Excel export failed:", err);
+      alert("Export failed. Check console.");
+    }
+  });
 
 
 
