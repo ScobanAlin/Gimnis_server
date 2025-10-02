@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { fetchRankings } from "../models/rankingModel";
 import { validateCategory } from "../utils/validators";
+import { fetchFullRankingsModel } from "../models/rankingModel";
 
 // 🎯 Render EJS shell
 export const showRankings = async (_req: Request, res: Response) => {
@@ -39,5 +40,15 @@ export const rankingsByCategory = async (req: Request, res: Response) => {
   } catch (err) {
     console.error("Error fetching rankings by category:", err);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const fetchFullRankings = async (req: Request, res: Response) => {
+  try {
+    const categories = await fetchFullRankingsModel();
+    res.json(categories);
+  } catch (err) {
+    console.error("Error fetching full rankings:", err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };

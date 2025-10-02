@@ -747,109 +747,63 @@
 
   document.getElementById("export-excel-btn").addEventListener("click", async () => {
     try {
-      const res = await fetch("/api/rankings");
+      // Fetch the new enriched rankings
+      const res = await fetch("/api/rankings/full");
       const rankings = await res.json();
 
+      // Create a workbook
       const wb = XLSX.utils.book_new();
 
-      for (const [category, list] of Object.entries(rankings)) {
+      // Process each category
+      for (const [category, competitors] of Object.entries(rankings)) {
         const rows = [];
 
-        // Collect all judges dynamically from first competitor’s scores
-        let allExecJudges = [];
-        let allArtJudges = [];
-        let allDiffJudges = [];
-
-        if (list.length > 0) {
-          const firstScoresRes = await fetch(`/api/scores/${list[0].competitor_id}`);
-          if (firstScoresRes.ok) {
-            const firstScoresData = await firstScoresRes.json();
-            const scores = firstScoresData.scores || {};
-
-            allExecJudges = Object.keys(scores).filter(k => k.includes("(execution)"))
-              .map(k => k.replace(" (execution)", "").trim());
-            allArtJudges = Object.keys(scores).filter(k => k.includes("(artistry)"))
-              .map(k => k.replace(" (artistry)", "").trim());
-            allDiffJudges = Object.keys(scores).filter(k => k.includes("(difficulty)"))
-              .map(k => k.replace(" (difficulty)", "").trim());
-          }
-        }
+        // Collect all judge headers dynamically
+        const allJudgeKeys = new Set();
+        competitors.forEach(c => {
+          Object.keys(c.scores).forEach(k => allJudgeKeys.add(k));
+        });
+        const judgeColumns = Array.from(allJudgeKeys);
 
         // Header row
         rows.push([
-          "Position", "Competitor", "Club",
-          ...allExecJudges.map(n => `Exec (${n})`), "Exec Total",
-          ...allArtJudges.map(n => `Art (${n})`), "Art Total",
-          ...allDiffJudges.map(n => `Diff (${n})`), "Diff Total",
-          "Line Pen", "Chair Pen", "Diff Pen",
+          "Position",
+          "Competitor",
+          "Club",
+          ...judgeColumns,  // each judge with type e.g. "Teodora Cucu (execution)"
           "Total Score"
         ]);
 
-        // Fill competitor rows
-        for (let idx = 0; idx < list.length; idx++) {
-          const c = list[idx];
-
-          let execScores = [], artScores = [], diffScores = [];
-          let linePen = 0, chairPen = 0, diffPen = 0;
-
-          try {
-            const scoresRes = await fetch(`/api/scores/${c.competitor_id}`);
-            if (scoresRes.ok) {
-              const scoresData = await scoresRes.json();
-              const scores = scoresData.scores || {};
-
-              // Map in the order of judge names
-              execScores = allExecJudges.map(name =>
-                Number(scores[`${name} (execution)`]) || 0
-              );
-              artScores = allArtJudges.map(name =>
-                Number(scores[`${name} (artistry)`]) || 0
-              );
-              diffScores = allDiffJudges.map(name =>
-                Number(scores[`${name} (difficulty)`]) || 0
-              );
-
-              // Penalties
-              for (const [key, val] of Object.entries(scores)) {
-                const num = Number(val) || 0;
-                if (key.includes("line_penalization")) linePen += num;
-                if (key.includes("principal_penalization")) chairPen += num;
-                if (key.includes("difficulty_penalization")) diffPen += num;
-              }
-            }
-          } catch (err) {
-            console.warn("Failed fetching scores:", err);
-          }
-
-          const execTot = execScores.reduce((a, b) => a + b, 0);
-          const artTot = artScores.reduce((a, b) => a + b, 0);
-          const diffTot = diffScores.reduce((a, b) => a + b, 0);
-
-          rows.push([
-            c.position || idx + 1,
+        // Rows for each competitor
+        competitors.forEach(c => {
+          const row = [
+            c.position,
             c.competitor,
             c.club,
-            ...execScores.map(s => s.toFixed(3)), execTot.toFixed(3),
-            ...artScores.map(s => s.toFixed(3)), artTot.toFixed(3),
-            ...diffScores.map(s => s.toFixed(3)), diffTot.toFixed(3),
-            linePen ? "-" + linePen.toFixed(3) : "0.000",
-            chairPen ? "-" + chairPen.toFixed(3) : "0.000",
-            diffPen ? "-" + diffPen.toFixed(3) : "0.000",
-            c.total_score.toFixed(3)
-          ]);
-        }
+          ];
 
+          // Fill in scores aligned with headers
+          judgeColumns.forEach(key => {
+            const val = c.scores[key];
+            row.push(val !== null && val !== undefined ? Number(val).toFixed(3) : "0.000");
+          });
+
+          row.push(c.total_score.toFixed(3));
+          rows.push(row);
+        });
+
+        // Convert to worksheet
         const ws = XLSX.utils.aoa_to_sheet(rows);
         XLSX.utils.book_append_sheet(wb, ws, category.substring(0, 31));
       }
 
+      // Download
       XLSX.writeFile(wb, "competition_rankings.xlsx");
     } catch (err) {
       console.error("Excel export failed:", err);
       alert("Export failed. Check console.");
     }
   });
-
 
 
         // Initial load

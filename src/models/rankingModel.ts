@@ -168,3 +168,49 @@ export const fetchRankings = async () => {
 
   return rankingsByCategory;
 };
+
+
+import { fetchScoresByCompetitor } from "./scoreModel";
+
+export const fetchFullRankingsModel = async () => {
+  const rankingsQuery = `
+    SELECT 
+      c.id as competitor_id,
+      c.name as competitor,
+      c.club,
+      c.category,
+      r.position,
+      r.total_score,
+      r.execution_score,
+      r.artistry_score,
+      r.difficulty_score
+    FROM rankings r
+    JOIN competitors c ON r.competitor_id = c.id
+    ORDER BY c.category, r.position;
+  `;
+  const { rows } = await db.query(rankingsQuery);
+
+  const categories: Record<string, any[]> = {};
+
+  for (const row of rows) {
+    const scoresRows = await fetchScoresByCompetitor(row.competitor_id);
+
+    const scores: Record<string, number | null> = {};
+    const judge_ids: Record<string, number> = {};
+
+    scoresRows.forEach((r) => {
+      const key = `${r.judge_name} (${r.score_type})`;
+      scores[key] = r.value ?? null;
+      judge_ids[key] = r.judge_id;
+    });
+
+    if (!categories[row.category]) categories[row.category] = [];
+    categories[row.category].push({
+      ...row,
+      scores,
+      judge_ids,
+    });
+  }
+
+  return categories;
+};

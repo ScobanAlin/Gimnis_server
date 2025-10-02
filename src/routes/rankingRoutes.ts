@@ -1,8 +1,10 @@
 import express from "express";
-import { showRankings, apiRankings } from "../controllers/rankingController";
+import { showRankings, apiRankings,fetchFullRankings } from "../controllers/rankingController";
 
 const router = express.Router();
 
 router.get("/rankings", showRankings);
 router.get("/api/rankings", apiRankings);
+router.get("/rankings/full", fetchFullRankings);
+
 export default router;
