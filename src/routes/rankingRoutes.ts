@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get("/rankings", showRankings);
 router.get("/api/rankings", apiRankings);
-router.get("/rankings/full", fetchFullRankings);
+router.get("/api/rankings/full", fetchFullRankings);
 
 export default router;
