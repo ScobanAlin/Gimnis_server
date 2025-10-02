@@ -555,6 +555,23 @@
       animation-delay: 1s;
     }
 
+#export-pdf-btn {
+  background: linear-gradient(135deg, #FFA500, #FFD700);
+  color: #003366;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+#export-pdf-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
     @keyframes float-up {
       0% {
         transform: translateY(100vh) rotate(0deg);
@@ -599,6 +616,8 @@
       <select id="category-select">
         <option value="all">All categories</option>
       </select>
+      <button id="export-pdf-btn">Export Rankings PDF</button>
+
     </div>
 
     <div id="rankings-container" class="fade-in">
@@ -789,6 +808,41 @@
       `;
         document.head.appendChild(style);
       </script>
+
+<script>
+  document.getElementById("export-pdf-btn").addEventListener("click", async () => {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF("p", "mm", "a4");
+
+    const container = document.getElementById("rankings-container");
+    const canvas = await html2canvas(container, { scale: 2, backgroundColor: "#ffffff" });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pageW = pdf.internal.pageSize.getWidth();
+    const pageH = pdf.internal.pageSize.getHeight();
+    const imgProps = pdf.getImageProperties(imgData);
+    const pdfW = pageW;
+    const pdfH = (imgProps.height * pdfW) / imgProps.width;
+
+    if (pdfH <= pageH) {
+      pdf.addImage(imgData, "PNG", 0, 0, pdfW, pdfH);
+    } else {
+      const totalPages = Math.ceil(pdfH / pageH);
+      let pos = 0;
+      for (let i = 0; i < totalPages; i++) {
+        if (i > 0) pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, pos, pdfW, pdfH);
+        pos -= pageH;
+      }
+    }
+    pdf.save("rankings.pdf");
+  });
+</script>
+
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 
 </html>
