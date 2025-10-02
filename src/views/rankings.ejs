@@ -745,37 +745,47 @@
           }
         }
 
- document.getElementById("export-excel-btn").addEventListener("click", async () => {
+  document.getElementById("export-excel-btn").addEventListener("click", async () => {
     try {
       const res = await fetch("/api/rankings");
       const rankings = await res.json();
-
-      const judgesRes = await fetch("/api/judges");
-      const judges = await judgesRes.json();
-
-      // Split judges by role
-      const execJudges = judges.filter(j => j.role === "execution")
-        .map(j => `${j.first_name} ${j.last_name}`);
-      const artJudges = judges.filter(j => j.role === "artistry")
-        .map(j => `${j.first_name} ${j.last_name}`);
-      const diffJudges = judges.filter(j => j.role === "difficulty")
-        .map(j => `${j.first_name} ${j.last_name}`);
 
       const wb = XLSX.utils.book_new();
 
       for (const [category, list] of Object.entries(rankings)) {
         const rows = [];
 
-        // Header row with judge names
+        // Collect all judges dynamically from first competitor’s scores
+        let allExecJudges = [];
+        let allArtJudges = [];
+        let allDiffJudges = [];
+
+        if (list.length > 0) {
+          const firstScoresRes = await fetch(`/api/scores/${list[0].competitor_id}`);
+          if (firstScoresRes.ok) {
+            const firstScoresData = await firstScoresRes.json();
+            const scores = firstScoresData.scores || {};
+
+            allExecJudges = Object.keys(scores).filter(k => k.includes("(execution)"))
+              .map(k => k.replace(" (execution)", "").trim());
+            allArtJudges = Object.keys(scores).filter(k => k.includes("(artistry)"))
+              .map(k => k.replace(" (artistry)", "").trim());
+            allDiffJudges = Object.keys(scores).filter(k => k.includes("(difficulty)"))
+              .map(k => k.replace(" (difficulty)", "").trim());
+          }
+        }
+
+        // Header row
         rows.push([
           "Position", "Competitor", "Club",
-          ...execJudges.map(n => `Exec (${n})`), "Exec Total",
-          ...artJudges.map(n => `Art (${n})`), "Art Total",
-          ...diffJudges.map(n => `Diff (${n})`), "Diff Total",
+          ...allExecJudges.map(n => `Exec (${n})`), "Exec Total",
+          ...allArtJudges.map(n => `Art (${n})`), "Art Total",
+          ...allDiffJudges.map(n => `Diff (${n})`), "Diff Total",
           "Line Pen", "Chair Pen", "Diff Pen",
           "Total Score"
         ]);
 
+        // Fill competitor rows
         for (let idx = 0; idx < list.length; idx++) {
           const c = list[idx];
 
@@ -788,14 +798,24 @@
               const scoresData = await scoresRes.json();
               const scores = scoresData.scores || {};
 
-              // Map values in judge order
-              execScores = execJudges.map((_, i) => Number(scores[`execution_${i + 1}`]) || 0);
-              artScores = artJudges.map((_, i) => Number(scores[`artistry_${i + 1}`]) || 0);
-              diffScores = diffJudges.map((_, i) => Number(scores[`difficulty_${i + 1}`]) || 0);
+              // Map in the order of judge names
+              execScores = allExecJudges.map(name =>
+                Number(scores[`${name} (execution)`]) || 0
+              );
+              artScores = allArtJudges.map(name =>
+                Number(scores[`${name} (artistry)`]) || 0
+              );
+              diffScores = allDiffJudges.map(name =>
+                Number(scores[`${name} (difficulty)`]) || 0
+              );
 
-              linePen = Number(scores.line_penalization) || 0;
-              chairPen = Number(scores.principal_penalization) || 0;
-              diffPen = Number(scores.difficulty_penalization) || 0;
+              // Penalties
+              for (const [key, val] of Object.entries(scores)) {
+                const num = Number(val) || 0;
+                if (key.includes("line_penalization")) linePen += num;
+                if (key.includes("principal_penalization")) chairPen += num;
+                if (key.includes("difficulty_penalization")) diffPen += num;
+              }
             }
           } catch (err) {
             console.warn("Failed fetching scores:", err);
