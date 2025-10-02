@@ -745,16 +745,14 @@
           }
         }
 
-  document.getElementById("export-excel-btn").addEventListener("click", async () => {
+ document.getElementById("export-excel-btn").addEventListener("click", async () => {
     try {
-      // Fetch the new enriched rankings
+      // Fetch enriched rankings with all scores
       const res = await fetch("/api/rankings/full");
       const rankings = await res.json();
 
-      // Create a workbook
       const wb = XLSX.utils.book_new();
 
-      // Process each category
       for (const [category, competitors] of Object.entries(rankings)) {
         const rows = [];
 
@@ -770,11 +768,13 @@
           "Position",
           "Competitor",
           "Club",
-          ...judgeColumns,  // each judge with type e.g. "Teodora Cucu (execution)"
+          ...judgeColumns,  // e.g. "Teodora Cucu (execution)"
+          "Execution Total",
+          "Artistry Total",
+          "Difficulty Total",
           "Total Score"
         ]);
 
-        // Rows for each competitor
         competitors.forEach(c => {
           const row = [
             c.position,
@@ -782,22 +782,25 @@
             c.club,
           ];
 
-          // Fill in scores aligned with headers
+          // Fill judge scores
           judgeColumns.forEach(key => {
             const val = c.scores[key];
             row.push(val !== null && val !== undefined ? Number(val).toFixed(3) : "0.000");
           });
 
+          // Use the official totals from DB
+          row.push(c.execution_score.toFixed(3));
+          row.push(c.artistry_score.toFixed(3));
+          row.push((c.difficulty_score / 2.0).toFixed(3));  // ✅ divide by 2
           row.push(c.total_score.toFixed(3));
+
           rows.push(row);
         });
 
-        // Convert to worksheet
         const ws = XLSX.utils.aoa_to_sheet(rows);
         XLSX.utils.book_append_sheet(wb, ws, category.substring(0, 31));
       }
 
-      // Download
       XLSX.writeFile(wb, "competition_rankings.xlsx");
     } catch (err) {
       console.error("Excel export failed:", err);
