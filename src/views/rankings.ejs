@@ -620,62 +620,74 @@
 
       <script>
         async function loadRankings() {
-          try {
-            const res = await fetch("/api/rankings");
-            const rankings = await res.json();
+            try {
+              const res = await fetch("/api/rankings");
+              const rankings = await res.json();
 
-            const select = document.getElementById("category-select");
-            const container = document.getElementById("rankings-container");
-            const selected = select.value;
+              const select = document.getElementById("category-select");
+              const container = document.getElementById("rankings-container");
+              const selected = select.value;
 
-            // Populate dropdown once
-            if (select.options.length === 1) {
-              Object.keys(rankings).forEach(cat => {
-                const opt = document.createElement("option");
-                opt.value = cat;
-                opt.textContent = cat;
-                select.appendChild(opt);
-              });
-            }
+              // Populate dropdown once
+              if (select.options.length === 1) {
+                Object.keys(rankings).forEach(cat => {
+                  const opt = document.createElement("option");
+                  opt.value = cat;
+                  opt.textContent = cat;
+                  select.appendChild(opt);
+                });
+              }
 
-            container.innerHTML = "";
+              container.innerHTML = "";
 
-            // Process each category
-            for (const [category, list] of Object.entries(rankings)) {
-              if (selected !== "all" && selected !== category) continue;
+              // Process each category
+              for (const [category, list] of Object.entries(rankings)) {
+                if (selected !== "all" && selected !== category) continue;
 
-              // Fetch penalization data for each competitor in this category
-              const enhancedList = await Promise.all(list.map(async (item) => {
-                try {
-                  const scoresRes = await fetch(`/api/scores/${item.competitor_id}`);
-                  let penalizations = { line_penalization: 0, principal_penalization: 0 };
-                  
-                  if (scoresRes.ok) {
-                    const scoresData = await scoresRes.json();
-                    const scores = scoresData.scores || {};
-                    
-                    // Extract penalizations from scores
-                    for (const [key, value] of Object.entries(scores)) {
-                      const num = Number(value); // ✅ force numeric
-                      if (isNaN(num)) continue;  // skip non-numeric values
+                // Fetch penalization data for each competitor in this category
+                const enhancedList = await Promise.all(list.map(async (item) => {
+                  try {
+                    const scoresRes = await fetch(`/api/scores/${item.competitor_id}`);
+                    let penalizations = {
+                      line_penalization: 0,
+                      principal_penalization: 0,
+                      difficulty_penalization: 0
+                    };
 
-                      if (key.includes('line_penalization')) {
-                        penalizations.line_penalization += num;
-                      }
-                      if (key.includes('principal_penalization')) {
-                        penalizations.principal_penalization += num;
+                    if (scoresRes.ok) {
+                      const scoresData = await scoresRes.json();
+                      const scores = scoresData.scores || {};
+
+                      // Extract penalizations from scores
+                      for (const [key, value] of Object.entries(scores)) {
+                        const num = Number(value); // ✅ force numeric
+                        if (isNaN(num)) continue;  // skip non-numeric values
+
+                        if (key.includes('line_penalization')) {
+                          penalizations.line_penalization += num;
+                        }
+                        if (key.includes('principal_penalization')) {
+                          penalizations.principal_penalization += num;
+                        }
+                        if (key.includes('difficulty_penalization')) {
+                          penalizations.difficulty_penalization += num;
+                        }
                       }
                     }
-                  }
-                  
-                  return { ...item, ...penalizations };
-                } catch (err) {
-                  console.warn(`Failed to fetch penalizations for competitor ${item.competitor_id}:`, err);
-                  return { ...item, line_penalization: 0, principal_penalization: 0 };
-                }
-              }));
 
-              let html = `
+                    return { ...item, ...penalizations };
+                  } catch (err) {
+                    console.warn(`Failed to fetch penalizations for competitor ${item.competitor_id}:`, err);
+                    return {
+                      ...item,
+                      line_penalization: 0,
+                      principal_penalization: 0,
+                      difficulty_penalization: 0
+                    };
+                  }
+                }));
+
+                let html = `
               <div class="category-block fade-in" data-category="${category}">
                 <h2>${category}</h2>
                 <div class="table-container">
@@ -690,109 +702,129 @@
                         <th>Difficulty</th>
                         <th>Line Penalty</th>
                         <th>Chair Penalty</th>
+                        <th>Diff Penalty</th>
                         <th>Total</th>
                       </tr>
                     </thead>
                     <tbody>`;
 
-              enhancedList.forEach(item => {
-                let medal = "";
-                if (item.position === 1) medal = "🥇";
-                else if (item.position === 2) medal = "🥈";
-                else if (item.position === 3) medal = "🥉";
+                enhancedList.forEach(item => {
+                  let medal = "";
+                  if (item.position === 1) medal = "🥇";
+                  else if (item.position === 2) medal = "🥈";
+                  else if (item.position === 3) medal = "🥉";
 
-                html += `
+                  html += `
     <tr>
       <td>${item.position} ${medal}</td>
       <td>${item.competitor}</td>
       <td>${item.club}</td>
       <td>${item.execution_score.toFixed(3)}</td>
       <td>${item.artistry_score.toFixed(3)}</td>
-      <td>${item.difficulty_score.toFixed(3)}</td>
-      <td class="penalization">${item.line_penalization ? '-' + item.line_penalization.toFixed(3) : '0.000'}</td>
-      <td class="penalization">${item.principal_penalization ? '-' + item.principal_penalization.toFixed(3) : '0.000'}</td>
+      <td>${(item.difficulty_score / 2.0).toFixed(3)}</td>
+      <td>${item.line_penalization ? '-' + Math.abs(item.line_penalization).toFixed(3) : '0.000'}</td>
+      <td>${item.principal_penalization ? '-' + Math.abs(item.principal_penalization).toFixed(3) : '0.000'}</td>
+      <td>${item.difficulty_penalization ? '-' + Math.abs(item.difficulty_penalization / 2.0).toFixed(3) : '0.000'}</td>
       <td>${item.total_score.toFixed(3)}</td>
     </tr>`;
-              });
+                });
 
-              html += `
+                html += `
                     </tbody>
                   </table>
                 </div>
               </div>`;
-              container.innerHTML += html;
-            }
+                container.innerHTML += html;
+              }
 
-            // Show message if no data
-            if (container.innerHTML === "") {
-              container.innerHTML = `
+              // Show message if no data
+              if (container.innerHTML === "") {
+                container.innerHTML = `
               <div class="category-block fade-in">
                 <h2>Nu există date disponibile</h2>
                 <p style="text-align: center; font-size: 18px; color: #FFD700; margin-top: 20px;">
                   Clasamentele se vor afișa pe măsură ce concurența progresează.
                 </p>
               </div>`;
-            }
-          } catch (err) {
-            console.error("Failed to fetch rankings:", err);
-            document.getElementById("rankings-container").innerHTML = `
+              }
+            } catch (err) {
+              console.error("Failed to fetch rankings:", err);
+              document.getElementById("rankings-container").innerHTML = `
             <div class="category-block fade-in">
               <h2>⚠️ Eroare la încărcarea datelor</h2>
               <p style="text-align: center; font-size: 18px; color: #FFD700; margin-top: 20px;">
                 Se reîncearcă automat în câteva secunde...
               </p>
             </div>`;
+            }
           }
-        }
-
- document.getElementById("export-excel-btn").addEventListener("click", async () => {
+  document.getElementById("export-excel-btn").addEventListener("click", async () => {
     try {
-      // Fetch enriched rankings with all scores
       const res = await fetch("/api/rankings/full");
       const rankings = await res.json();
-
       const wb = XLSX.utils.book_new();
 
       for (const [category, competitors] of Object.entries(rankings)) {
         const rows = [];
 
-        // Collect all judge headers dynamically
-        const allJudgeKeys = new Set();
+        // Collect judge keys by type
+        const executionKeys = [];
+        const artistryKeys = [];
+        const difficultyKeys = [];
+        const diffPenKeys = [];
+        const linePenKeys = [];
+        const chairPenKeys = [];
+
         competitors.forEach(c => {
-          Object.keys(c.scores).forEach(k => allJudgeKeys.add(k));
+          Object.keys(c.scores).forEach(key => {
+            if (key.includes("(execution)")) executionKeys.push(key);
+            else if (key.includes("(artistry)")) artistryKeys.push(key);
+            else if (key.includes("(difficulty)")) difficultyKeys.push(key);
+            else if (key.includes("(difficulty_penalization)")) diffPenKeys.push(key);
+            else if (key.includes("(line_penalization)")) linePenKeys.push(key);
+            else if (key.includes("(principal_penalization)")) chairPenKeys.push(key);
+          });
         });
-        const judgeColumns = Array.from(allJudgeKeys);
+
+        // Deduplicate & preserve order
+        const dedup = (arr) => [...new Set(arr)];
+
+        const orderedColumns = [
+          ...dedup(executionKeys), "Execution Total",
+          ...dedup(artistryKeys), "Artistry Total",
+          ...dedup(difficultyKeys), "Difficulty Total (/2)",
+          ...dedup(diffPenKeys),
+          ...dedup(linePenKeys),
+          ...dedup(chairPenKeys),
+          "Total Score"
+        ];
 
         // Header row
         rows.push([
           "Position",
           "Competitor",
           "Club",
-          ...judgeColumns,  // e.g. "Teodora Cucu (execution)"
-          "Execution Total",
-          "Artistry Total",
-          "Difficulty Total",
-          "Total Score"
+          ...orderedColumns
         ]);
 
+        // Competitor rows
         competitors.forEach(c => {
-          const row = [
-            c.position,
-            c.competitor,
-            c.club,
-          ];
+          const row = [c.position, c.competitor, c.club];
 
-          // Fill judge scores
-          judgeColumns.forEach(key => {
-            const val = c.scores[key];
-            row.push(val !== null && val !== undefined ? Number(val).toFixed(3) : "0.000");
+          orderedColumns.forEach(col => {
+            if (col === "Execution Total") {
+              row.push(c.execution_score.toFixed(3));
+            } else if (col === "Artistry Total") {
+              row.push(c.artistry_score.toFixed(3));
+            } else if (col === "Difficulty Total (/2)") {
+              row.push((c.difficulty_score / 2.0).toFixed(3));
+            } else if (col === "Total Score") {
+              row.push(c.total_score.toFixed(3));
+            } else {
+              const val = c.scores[col];
+              row.push(val !== null && val !== undefined ? Number(val).toFixed(3) : "0.000");
+            }
           });
-
-          // Use the official totals from DB
-          row.push(c.execution_score.toFixed(3));
-          row.push(c.artistry_score.toFixed(3));
-          row.push((c.difficulty_score / 2.0).toFixed(3));  // ✅ divide by 2
-          row.push(c.total_score.toFixed(3));
 
           rows.push(row);
         });

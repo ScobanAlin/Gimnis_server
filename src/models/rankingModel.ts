@@ -180,12 +180,15 @@ export const fetchFullRankingsModel = async () => {
       s.judge_id,
       s.score_type,
       s.value,
+      j.first_name || ' ' || j.last_name AS judge_name,
+      j.role AS judge_role,
       m.id AS member_id,
       m.first_name,
       m.last_name
     FROM validated_competitors vc
     JOIN competitors c ON c.id = vc.competitor_id
     LEFT JOIN scores s ON s.competitor_id = c.id
+    LEFT JOIN judges j ON j.id = s.judge_id
     LEFT JOIN competitor_members m ON m.competitor_id = c.id
     ORDER BY c.category, c.id, m.id, s.judge_id;
   `;
@@ -206,15 +209,13 @@ export const fetchFullRankingsModel = async () => {
         difficulty: [] as number[],
         penalties: [] as number[],
         members: [] as string[],
-        scoreKeys: new Set<string>(),
-        scores: {} as Record<string, number | null>,
-        judge_ids: {} as Record<string, number>
+        scores: {} as Record<string, number | null>
       };
     }
 
     const comp = grouped[row.competitor_id];
 
-    // members
+    // Members
     if (row.member_id) {
       const memberName = `${row.last_name} ${row.first_name}`;
       if (!comp.members.includes(memberName)) {
@@ -222,33 +223,27 @@ export const fetchFullRankingsModel = async () => {
       }
     }
 
-    // scores (avoid duplicate rows from join)
+    // Scores
     if (row.score_type && row.value != null) {
-      const key = `${row.judge_id}-${row.score_type}`;
-      if (!comp.scoreKeys.has(key)) {
-        comp.scoreKeys.add(key);
-        const val = Number(row.value);
+      const val = Number(row.value);
+      const key = `${row.judge_name} (${row.score_type})`;
 
-        // classify
-        if (row.score_type === "execution") comp.execution.push(val);
-        if (row.score_type === "artistry") comp.artistry.push(val);
-        if (row.score_type === "difficulty") comp.difficulty.push(val);
-        if (
-          ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
-            row.score_type
-          )
-        ) {
-          comp.penalties.push(val);
-        }
+      comp.scores[key] = val;
 
-        // also fetch judge names for export
-        comp.scores[`${row.judge_id} (${row.score_type})`] = val;
-        comp.judge_ids[`${row.judge_id} (${row.score_type})`] = row.judge_id;
+      if (row.score_type === "execution") comp.execution.push(val);
+      if (row.score_type === "artistry") comp.artistry.push(val);
+      if (row.score_type === "difficulty") comp.difficulty.push(val);
+      if (
+        ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
+          row.score_type
+        )
+      ) {
+        comp.penalties.push(val);
       }
     }
   }
 
-  // calculate averages + totals + rankings
+  // Calculate totals
   const rankingsByCategory: Record<string, any[]> = {};
 
   Object.values(grouped).forEach((comp: any) => {
@@ -270,12 +265,11 @@ export const fetchFullRankingsModel = async () => {
       execution_score: execution_avg,
       artistry_score: artistry_avg,
       difficulty_score: difficulty_val,
-      scores: comp.scores,
-      judge_ids: comp.judge_ids
+      scores: comp.scores
     });
   });
 
-  // assign positions with tie-handling
+  // Ranking positions with ties
   Object.keys(rankingsByCategory).forEach((cat) => {
     const list = rankingsByCategory[cat];
     list.sort((a, b) => {
