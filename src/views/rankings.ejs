@@ -331,7 +331,9 @@
     /* Score columns styling */
     td:nth-child(4),
     td:nth-child(5),
-    td:nth-child(6) {
+    td:nth-child(6),
+    td:nth-child(7),
+    td:nth-child(8) {
       font-weight: 700;
       color: #FFD700;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -339,13 +341,10 @@
     }
 
     /* Penalization columns styling */
-    td:nth-child(7),
-    td:nth-child(8),
-    td:nth-child(9) {
+    .penalization {
       color: #FF6B6B !important;
       font-weight: 800;
       text-shadow: 1px 1px 3px rgba(255, 107, 107, 0.5);
-      font-size: 16px;
     }
 
     td:last-child {
@@ -399,8 +398,8 @@
 
       th,
       td {
-        padding: 15px 8px;
-        font-size: 13px;
+        padding: 15px 10px;
+        font-size: 14px;
       }
     }
 
@@ -440,13 +439,13 @@
       }
 
       table {
-        min-width: 900px;
+        min-width: 800px;
       }
 
       th,
       td {
-        padding: 12px 6px;
-        font-size: 12px;
+        padding: 12px 8px;
+        font-size: 13px;
         white-space: nowrap;
       }
     }
@@ -555,23 +554,6 @@
       animation-delay: 1s;
     }
 
-#export-pdf-btn {
-  background: linear-gradient(135deg, #FFA500, #FFD700);
-  color: #003366;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 25px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-#export-pdf-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
     @keyframes float-up {
       0% {
         transform: translateY(100vh) rotate(0deg);
@@ -616,8 +598,19 @@
       <select id="category-select">
         <option value="all">All categories</option>
       </select>
-      <button id="export-pdf-btn">Export Rankings PDF</button>
-
+      <button id="export-excel-btn" style="
+        margin-left: 15px;
+        padding: 10px 18px;
+        border: none;
+        border-radius: 20px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #FFD700, #FFA500);
+        color: #003366;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      ">
+        Export Excel
+      </button>
     </div>
 
     <div id="rankings-container" class="fade-in">
@@ -655,11 +648,7 @@
               const enhancedList = await Promise.all(list.map(async (item) => {
                 try {
                   const scoresRes = await fetch(`/api/scores/${item.competitor_id}`);
-                  let penalizations = { 
-                    line_penalization: 0, 
-                    principal_penalization: 0, 
-                    difficulty_penalization: 0 
-                  };
+                  let penalizations = { line_penalization: 0, principal_penalization: 0 };
                   
                   if (scoresRes.ok) {
                     const scoresData = await scoresRes.json();
@@ -676,21 +665,13 @@
                       if (key.includes('principal_penalization')) {
                         penalizations.principal_penalization += num;
                       }
-                      if (key.includes('difficulty_penalization')) {
-                        penalizations.difficulty_penalization += num;
-                      }
                     }
                   }
                   
                   return { ...item, ...penalizations };
                 } catch (err) {
                   console.warn(`Failed to fetch penalizations for competitor ${item.competitor_id}:`, err);
-                  return { 
-                    ...item, 
-                    line_penalization: 0, 
-                    principal_penalization: 0, 
-                    difficulty_penalization: 0 
-                  };
+                  return { ...item, line_penalization: 0, principal_penalization: 0 };
                 }
               }));
 
@@ -709,7 +690,6 @@
                         <th>Difficulty</th>
                         <th>Line Penalty</th>
                         <th>Chair Penalty</th>
-                        <th>Diff Penalty</th>
                         <th>Total</th>
                       </tr>
                     </thead>
@@ -728,10 +708,9 @@
       <td>${item.club}</td>
       <td>${item.execution_score.toFixed(3)}</td>
       <td>${item.artistry_score.toFixed(3)}</td>
-      <td>${(item.difficulty_score/2.0).toFixed(3)}</td>
-      <td>${item.line_penalization ? '-' + Math.abs(item.line_penalization).toFixed(3) : '0.000'}</td>
-      <td>${item.principal_penalization ? '-' + Math.abs(item.principal_penalization).toFixed(3) : '0.000'}</td>
-      <td>${item.difficulty_penalization ? '-' + Math.abs(item.difficulty_penalization/2.0).toFixed(3) : '0.000'}</td>
+      <td>${item.difficulty_score.toFixed(3)}</td>
+      <td class="penalization">${item.line_penalization ? '-' + item.line_penalization.toFixed(3) : '0.000'}</td>
+      <td class="penalization">${item.principal_penalization ? '-' + item.principal_penalization.toFixed(3) : '0.000'}</td>
       <td>${item.total_score.toFixed(3)}</td>
     </tr>`;
               });
@@ -766,11 +745,75 @@
           }
         }
 
+  document.getElementById("export-excel-btn").addEventListener("click", async () => {
+    try {
+      // Get the same data you already use for rendering
+      const res = await fetch("/api/rankings");
+      const rankings = await res.json();
+
+      // Create a workbook
+      const wb = XLSX.utils.book_new();
+
+      for (const [category, list] of Object.entries(rankings)) {
+        const rows = [];
+
+        // Header
+        rows.push([
+          "Position",
+          "Competitor",
+          "Club",
+          "Exec J1", "Exec J2", "Exec J3", "Exec J4", "Exec Total",
+          "Art J1", "Art J2", "Art J3", "Art J4", "Art Total",
+          "Diff J1", "Diff J2", "Diff Total",
+          "Line Pen", "Chair Pen", "Diff Pen",
+          "Total Score"
+        ]);
+
+        list.forEach((c, idx) => {
+          // assume your API already has these arrays per competitor
+          const execScores = c.execution_scores || []; // array of 4
+          const artScores = c.artistry_scores || [];  // array of 4
+          const diffScores = c.difficulty_scores || [];// array of 2
+
+          const execTot = execScores.reduce((a, b) => a + b, 0);
+          const artTot = artScores.reduce((a, b) => a + b, 0);
+          const diffTot = diffScores.reduce((a, b) => a + b, 0);
+
+          rows.push([
+            c.position || idx + 1,
+            c.competitor,
+            c.club,
+            ...(execScores.map(s => s.toFixed(3))),
+            execTot.toFixed(3),
+            ...(artScores.map(s => s.toFixed(3))),
+            artTot.toFixed(3),
+            ...(diffScores.map(s => s.toFixed(3))),
+            diffTot.toFixed(3),
+            (c.line_penalization ? -Math.abs(c.line_penalization).toFixed(3) : "0.000"),
+            (c.principal_penalization ? -Math.abs(c.principal_penalization).toFixed(3) : "0.000"),
+            (c.difficulty_penalization ? -Math.abs(c.difficulty_penalization).toFixed(3) : "0.000"),
+            c.total_score.toFixed(3)
+          ]);
+        });
+
+        const ws = XLSX.utils.aoa_to_sheet(rows);
+        XLSX.utils.book_append_sheet(wb, ws, category.substring(0, 31));
+      }
+
+      // Download
+      XLSX.writeFile(wb, "competition_rankings.xlsx");
+    } catch (err) {
+      console.error("Excel export failed:", err);
+      alert("Export failed. Check console.");
+    }
+  });
+
+
         // Initial load
         loadRankings();
 
-        // Refresh every 60s
-        setInterval(loadRankings, 60000);
+        // Refresh every 5s
+        setInterval(loadRankings, 5000);
 
         // Reload data on category change
         document.getElementById("category-select").addEventListener("change", loadRankings);
@@ -808,40 +851,7 @@
       `;
         document.head.appendChild(style);
       </script>
-
-<script>
-  document.getElementById("export-pdf-btn").addEventListener("click", async () => {
-    const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF("p", "mm", "a4");
-
-    const container = document.getElementById("rankings-container");
-    const canvas = await html2canvas(container, { scale: 2, backgroundColor: "#ffffff" });
-    const imgData = canvas.toDataURL("image/png");
-
-    const pageW = pdf.internal.pageSize.getWidth();
-    const pageH = pdf.internal.pageSize.getHeight();
-    const imgProps = pdf.getImageProperties(imgData);
-    const pdfW = pageW;
-    const pdfH = (imgProps.height * pdfW) / imgProps.width;
-
-    if (pdfH <= pageH) {
-      pdf.addImage(imgData, "PNG", 0, 0, pdfW, pdfH);
-    } else {
-      const totalPages = Math.ceil(pdfH / pageH);
-      let pos = 0;
-      for (let i = 0; i < totalPages; i++) {
-        if (i > 0) pdf.addPage();
-        pdf.addImage(imgData, "PNG", 0, pos, pdfW, pdfH);
-        pos -= pageH;
-      }
-    }
-    pdf.save("rankings.pdf");
-  });
-</script>
-
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 </body>
 
