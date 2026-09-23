@@ -47,32 +47,32 @@ async function fetchCompetitorScoreBreakdown(competitorId: number) {
   const execution: number[] = [];
   const artistry: number[] = [];
   const difficulty: number[] = [];
-  let penalties = 0;
+  let linePenalty = 0;
+  let principalPenalty = 0;
+  let difficultyPenalty = 0;
 
   for (const row of scoresRes.rows) {
     const val = Number(row.value);
     if (row.score_type === "execution") execution.push(val);
     else if (row.score_type === "artistry") artistry.push(val);
     else if (row.score_type === "difficulty") difficulty.push(val);
-    else if (
-      ["difficulty_penalization", "line_penalization", "principal_penalization"].includes(
-        row.score_type
-      )
-    ) {
-      penalties += val;
-    }
+    else if (row.score_type === "line_penalization") linePenalty += val;
+    else if (row.score_type === "principal_penalization") principalPenalty += val;
+    else if (row.score_type === "difficulty_penalization") difficultyPenalty += val;
   }
 
   const name = membersRes.rows
     .map((m) => `${m.last_name} ${m.first_name}`)
     .join(" / ");
 
+  // Matches src/views/rankings.ejs exactly: difficulty (and difficulty_penalization)
+  // are halved for display; execution/artistry/line/principal are not.
   return {
     name,
     artistry: applyTolerance(artistry),
     execution: applyTolerance(execution),
-    difficulty: difficulty.length > 0 ? difficulty[0] : 0,
-    penalties,
+    difficulty: difficulty.length > 0 ? difficulty[0] / 2 : 0,
+    penalties: linePenalty + principalPenalty + difficultyPenalty / 2,
   };
 }
 
