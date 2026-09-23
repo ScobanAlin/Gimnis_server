@@ -95,11 +95,11 @@ export async function updateSheetOnValidate(competitorId: number, totalScore: nu
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [[
-          round1(artistry),
-          round1(execution),
-          round1(difficulty),
-          round1(penalties),
-          round3(totalScore),
+          artistry,
+          execution,
+          difficulty,
+          penalties,
+          totalScore,
           "DA",
         ]],
       },
@@ -130,11 +130,4 @@ export async function clearSheetOnUnvalidate(competitorId: number) {
   } catch (err) {
     console.error("Google Sheets sync (unvalidate) failed:", err);
   }
-}
-
-function round1(n: number) {
-  return Math.round(n * 10) / 10;
-}
-function round3(n: number) {
-  return Math.round(n * 1000) / 1000;
 }
