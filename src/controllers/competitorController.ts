@@ -18,6 +18,8 @@ import {
   validateTotalScore,
 } from "../utils/validators";
 
+import { updateSheetOnValidate, clearSheetOnUnvalidate } from "../services/googleSheets";
+
 // --- Create competitor ---
 export const createCompetitor = async (req: Request, res: Response) => {
   const { category, club, members } = req.body;
@@ -98,6 +100,7 @@ export const validateCompetitor = async (req: Request, res: Response) => {
     if (!existing) return res.status(404).json({ error: "Competitor not found" });
 
     const result = await validateCompetitorById(competitorId, totalScore);
+    await updateSheetOnValidate(competitorId, totalScore);
     res.json({ message: "Competitor validated", ...result });
   } catch (err) {
     console.error("Error validating competitor:", err);
@@ -115,6 +118,7 @@ export const unvalidateCompetitor = async (req: Request, res: Response) => {
     if (!existing) return res.status(404).json({ error: "Competitor not found" });
 
     const result = await unvalidateCompetitorById(competitorId);
+    await clearSheetOnUnvalidate(competitorId);
     res.json({ message: "Competitor unvalidated", ...result });
   } catch (err) {
     console.error("Error unvalidating competitor:", err);
